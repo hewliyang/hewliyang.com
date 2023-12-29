@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
-	import { img } from '$lib/components/custom'
-	export { img }
+	import { img, blockquote, table, tbody, td, th, tr } from '$lib/components/custom';
+	export { img, blockquote, table, tbody, td, th, tr };
 </script>
 
 <slot />

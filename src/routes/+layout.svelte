@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '../app.pcss';
 	import '@fontsource-variable/inter';
-	import '@fontsource/fira-mono';
+	import '@fontsource-variable/jetbrains-mono';
 	import Header from '$lib/components/Header.svelte';
 	import { ModeWatcher } from 'mode-watcher';
 	import { dev } from '$app/environment';

@@ -15,8 +15,8 @@
 <article class="space-y-4 pt-6">
 	<Alert.Root>
 		<Hand class="h-4 w-4" />
-		<Alert.Title class="text-lg font-semibold">Hi there!</Alert.Title>
-		<Alert.Description class="text-wrap">
+		<Alert.Title>Hi there!</Alert.Title>
+		<Alert.Description>
 			I'm Li Yang. A final year undergraduate and aspiring engineering professional with significant
 			exposure to the <span class="font-bold">full stack</span> and
 			<span class="font-bold">machine learning</span>

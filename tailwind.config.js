@@ -1,11 +1,22 @@
 import { fontFamily } from 'tailwindcss/defaultTheme';
 
 /** @type {import('tailwindcss').Config} */
+
+const plugin = require('tailwindcss/plugin');
+
 const config = {
 	darkMode: ['class'],
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	safelist: ['dark'],
-	plugins: [require('@tailwindcss/typography')],
+	plugins: [
+		require('@tailwindcss/typography'),
+		plugin(function ({ addVariant }) {
+			addVariant(
+				'prose-inline-code',
+				'&.prose :where(:not(pre)>code):not(:where([class~="not-prose"] *))'
+			);
+		})
+	],
 	theme: {
 		container: {
 			center: true,
@@ -57,7 +68,7 @@ const config = {
 			},
 			fontFamily: {
 				sans: ['Inter Variable', ...fontFamily.sans],
-				mono: ['Fira Mono', ...fontFamily.mono]
+				mono: ['JetBrains Mono Variable', ...fontFamily.mono]
 			}
 		}
 	}

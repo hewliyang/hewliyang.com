@@ -105,7 +105,7 @@
 		@apply visible;
 	}
 
-	.prose pre {
+	.prose pre prose-inline-code {
 		@apply overflow-x-auto rounded-lg border border-neutral-200 bg-neutral-50 dark:border-neutral-900 dark:bg-neutral-900;
 	}
 
@@ -165,13 +165,6 @@
 		font-weight: 500;
 	}
 
-	table {
-		display: block;
-		max-width: fit-content;
-		overflow-x: auto;
-		white-space: nowrap;
-	}
-
 	.prose .callout > p {
 		margin: 0 !important;
 	}
@@ -181,6 +174,7 @@
 	}
 
 	.prose > p,
+	.prose > ol,
 	.prose > ul,
 	.prose > li,
 	.prose > span,

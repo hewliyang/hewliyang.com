@@ -13,13 +13,14 @@ const mdsvexOptions = {
 	},
 	highlight: {
 		highlighter: async (code, lang = 'text') => {
-			const highlighter = await shiki.getHighlighter({ theme: 'github-dark' });
+			const highlighter = await shiki.getHighlighter({ theme: 'vitesse-dark' });
 			const html = escapeSvelte(highlighter.codeToHtml(code, { lang }));
 			return `{@html \`${html}\`}`;
 		}
 	},
 	remarkPlugins: [remarkMath],
-	rehypePlugins: [rehypeKatex]
+	rehypePlugins: [rehypeKatex],
+	smartypants: true
 };
 
 /** @type {import('@sveltejs/kit').Config} */

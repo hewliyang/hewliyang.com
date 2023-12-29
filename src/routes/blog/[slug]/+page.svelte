@@ -8,6 +8,12 @@
 	<title>{data.meta.title}</title>
 	<meta property="og:type" content="article" />
 	<meta property="og:title" content={data.meta.title} />
+	<link
+		rel="stylesheet"
+		href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
+		integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ"
+		crossorigin="anonymous"
+	/>
 </svelte:head>
 
 <article class="space-y-6 pt-6">
@@ -18,7 +24,9 @@
 
 	<Separator />
 
-	<div class="prose prose-quoteless prose-zinc dark:prose-invert">
+	<div
+		class="prose-quoteless prose prose-zinc dark:prose-invert prose-inline-code:rounded prose-inline-code:border prose-inline-code:before:hidden prose-inline-code:after:hidden"
+	>
 		<svelte:component this={data.content} class="prose dark:prose-invert" />
 	</div>
 </article>
