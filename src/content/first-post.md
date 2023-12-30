@@ -21,6 +21,12 @@ This is a list:
 2. Banana
 3. Pineapple
 
+| **Apple** | Banana | Pineapple   |
+|----------|----------|------------|
+| Content  | More     | $x^2 + y^2$|
+| Text     | Math     | $\sqrt{2}$ |
+
+
 This is an unordered list:
 
 - one

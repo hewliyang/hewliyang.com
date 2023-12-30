@@ -18,7 +18,7 @@
 		<Alert.Title>Hi there!</Alert.Title>
 		<Alert.Description>
 			I'm Li Yang. A final year undergraduate and aspiring engineering professional with significant
-			<a class="rounded-lg border border-dotted px-1 font-mono underline" href="/resume">exposure</a
+			<a class="rounded-lg border border-dashed px-1 font-mono underline" href="/resume">exposure</a
 			>
 			to the
 			<span class="font-bold">full stack</span>
