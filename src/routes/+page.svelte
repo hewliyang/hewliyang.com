@@ -18,10 +18,15 @@
 		<Alert.Title>Hi there!</Alert.Title>
 		<Alert.Description>
 			I'm Li Yang. A final year undergraduate and aspiring engineering professional with significant
-			exposure to the <span class="font-bold">full stack</span> and
+			<a class="rounded-lg border border-dotted px-1 font-mono underline" href="/resume">exposure</a
+			>
+			to the
+			<span class="font-bold">full stack</span>
+			and
 			<span class="font-bold">machine learning</span>
 		</Alert.Description>
 	</Alert.Root>
+
 	<h2 class="font-mono text-lg tracking-tighter">Blog</h2>
 	<section>
 		<ul class="space-y-4">

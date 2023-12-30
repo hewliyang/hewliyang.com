@@ -5,3 +5,10 @@ export type Post = {
 	date: string;
 	published: boolean;
 };
+
+export type Project = {
+	title: string;
+	href: string;
+	description: string;
+	tags: string[];
+};
