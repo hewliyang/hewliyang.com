@@ -51,10 +51,8 @@
 	</section>
 	<section class="print-force-new-page flex min-h-0 scroll-mb-16 flex-col gap-y-3">
 		<h2 class="text-xl font-bold">Projects</h2>
-		{#each projects as { description, href, tags, title }}
-			<div
-				class="-mx-3 grid grid-cols-1 gap-3 print:grid-cols-3 print:gap-2 md:grid-cols-2 lg:grid-cols-3"
-			>
+		<div class="grid grid-cols-1 gap-3 print:grid-cols-2 print:gap-2 md:grid-cols-2 lg:grid-cols-2">
+			{#each projects as { description, href, tags, title }}
 				<div
 					class="flex flex-col overflow-hidden rounded-lg border border-muted bg-card p-3 text-card-foreground"
 				>
@@ -80,7 +78,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
-		{/each}
+			{/each}
+		</div>
 	</section>
 </div>
