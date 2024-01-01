@@ -36,7 +36,8 @@ export const educations = [
 export const works = [
 	{
 		company: 'GIC',
-		description: 'Building LLM apps & research on latest developments in NLP',
+		description:
+			'Building & deploying LLM-driven full stack applications across the organization. Maintaining a internal Python package for LLM orchestration including CI/CD & unit testing.',
 		isInternship: true,
 		position: 'Machine Learning Engineer Intern',
 		from: 'June 2023',
@@ -44,7 +45,7 @@ export const works = [
 	},
 	{
 		company: 'Infineon',
-		description: 'Data cleaning , OCR & training BERT-style models for text classification',
+		description: 'Data cleaning, OCR & training BERT-style models for text classification',
 		isInternship: true,
 		position: 'Data Science Intern',
 		from: 'May 2023',

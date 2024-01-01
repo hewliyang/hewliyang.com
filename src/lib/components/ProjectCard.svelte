@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Project } from '$lib/types';
+	import { Badge } from '$lib/components/ui/badge';
 	export let project: Project;
 </script>
 
@@ -26,11 +27,7 @@
 	<div class="mt-auto flex text-pretty font-mono text-sm text-muted-foreground">
 		<div class="mt-2 flex flex-wrap gap-1">
 			{#each project.tags as tag}
-				<div
-					class="inline-flex items-center text-nowrap rounded-md border border-transparent bg-secondary px-1 py-0 font-mono text-[10px] font-semibold text-secondary-foreground transition-colors hover:bg-secondary/60 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
-				>
-					{tag}
-				</div>
+				<Badge>{tag}</Badge>
 			{/each}
 		</div>
 	</div>

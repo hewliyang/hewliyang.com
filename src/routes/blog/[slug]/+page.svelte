@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { formatDate } from '$lib/utils';
 	import { Separator } from '$lib/components/ui/separator';
+	import { title } from '$lib/config';
 	export let data;
 </script>
 
 <svelte:head>
-	<title>{data.meta.title}</title>
+	<title>{data.meta.title} | {title}</title>
 	<meta property="og:type" content="article" />
 	<meta property="og:title" content={data.meta.title} />
 	<link
