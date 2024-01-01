@@ -20,7 +20,8 @@ export const skills = [
 	'FastAPI',
 	'Git',
 	'Docker',
-	'LaTeX'
+	'LaTeX',
+	'GitHub Actions'
 ];
 
 export const educations = [
@@ -78,7 +79,7 @@ export const projects = [
 		title: 'nus-nextbus-web',
 		description: 'NUS Internal Shuttle Bus web client for visualizing arrival times & routes.',
 		href: 'https://github.com/hewliyang/nus-nextbus-web',
-		tags: ['Svelte', 'SvelteKit', 'Typescript', 'TailwindCSS']
+		tags: ['Svelte', 'SvelteKit', 'Typescript', 'TailwindCSS', 'GitHub Actions']
 	},
 	{
 		title: 'pru-viz',

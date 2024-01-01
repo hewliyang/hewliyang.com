@@ -19,7 +19,7 @@
 	{/if}
 </svelte:head>
 
-<div class="mx-auto mb-40 mt-8 flex max-w-2xl flex-col">
+<div class="mx-auto mb-40 mt-8 flex max-w-3xl flex-col">
 	<Header />
 	<main class="flex-1">
 		<div class="container flex flex-col space-y-2">
