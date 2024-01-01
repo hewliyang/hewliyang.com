@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { Hand } from 'lucide-svelte';
 	import * as Alert from '$lib/components/ui/alert';
 	import * as config from '$lib/config';
+	import { Hand } from 'lucide-svelte';
 	import { formatDate } from '$lib/utils.js';
-	import { Separator } from '$lib/components/ui/separator';
+	import { Badge } from '$lib/components/ui/badge';
 
 	export let data;
 </script>
@@ -32,24 +32,12 @@
 		<ul class="space-y-4">
 			{#each data.posts as post}
 				<li>
-					<a class="mb-4 font-medium underline underline-offset-4" href="blog/{post.slug}"
-						>{post.title}</a
-					>
-					<!-- <p class="text-xs tracking-tight">{formatDate(post.date)}</p> -->
-					<p class="text-muted-foreground">{post.description}</p>
-				</li>
-			{/each}
-		</ul>
-	</section>
-	<h2 class="font-mono text-lg tracking-tighter">Projects</h2>
-	<section>
-		<ul class="space-y-4">
-			{#each data.posts as post}
-				<li>
-					<a class="mb-4 font-medium underline underline-offset-4" href="blog/{post.slug}"
-						>{post.title}</a
-					>
-					<!-- <small>{formatDate(post.date)}</small> -->
+					<div class="mb-1 flex items-center justify-between">
+						<a class="font-medium underline underline-offset-4" href="blog/{post.slug}"
+							>{post.title}</a
+						>
+						<Badge class="text-xs tracking-tight">{formatDate(post.date)}</Badge>
+					</div>
 					<p class="text-muted-foreground">{post.description}</p>
 				</li>
 			{/each}
