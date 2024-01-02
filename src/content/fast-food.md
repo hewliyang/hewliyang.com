@@ -1,57 +1,30 @@
 ---
-title: Scrape & Visualize Fast Food Outlets
+title: Visualizing Fast Food Outlet Density
 date: '2022-12-25'
-description: Reverse engineer the typical "Find-A-Store" section of websites like McDonalds, KFC, Pizza Hut to get outlet data.
+description: Reverse engineer API's for websites like McDonalds, KFC, Pizza Hut for hassle-free scraping.
 published: true
 ---
 
-![Fast Food Malaysia Counts 2022](../../fast-food.gif)
-
-## Quick Start
-
-The complete code can be imported as utility functions for ease of use. 
-
-Firstly, clone my repository
-
-```bash
-git clone https://github.com/hewliyang/misc.git
-```
-The only dependency required is `pandas`.
-
-Enter the `msia-fastfood` directory. From here, you can setup a Python script or Jupyter Notebook and use the functions as follows
-
-```python
-import pandas as pd
-from utils.scraper import get_mcd
-
-mcd_df = get_mcd()
-```
-
-The `get_<Franchise>()` functions return a `pd.DataFrame` object. Note that all this data is retrieved straight from the websites and
-no cleaning has been done. To see what attributes are available:
-
-```python
-mcd_df.columns
-```
-
-## Reverse Engineering
+The process is very similar for almost all websites thanks to the **client server model** in web development. Lets consider **KFC** as an example.
 
 ### KFC
 
-Consider the Find-A-KFC [page](https://kfc.com.my/find-my-kfc)
+Navigate to the **Find-A-KFC** [page](https://kfc.com.my/find-my-kfc)
 
 ![Find a KFC Webpage](../../find-a-kfc.png)
 
-This webpage obviously has to pull the outlet location data from a backend somewhere. We can sniff out the API using Chrome DevTools. 
+This webpage has to pull the outlet location data from a backend somewhere. We can sniff out the API using Chrome DevTools. 
 Hit F12, navigate to the **Network** tab and refresh the page. Filter the outputs by **Fetch/XHR**.
 
 ![Chrome Devtools](../../dev-tools.png)
 
-Now we need to identify the correct query that was made for the outlet locations. Intuitively it should be the one with the largest
+Looks like KFC uses a **GraphQL** backend. Now we need to identify the correct query that was made for the outlet locations. Intuitively it should be the one with the largest
 payload. Verify by checking its contents.
 
 ![Chrome Devtools](../../dev-tools-2.png)
 
+Great! It contains all the information we need including address, city, latitude, longitude and other metadata, and we didn't need
+to parse any `HTML` with tools like `BeautifulSoup`.
 From here, simply copy the URL of the request. We are now ready to get this data from the URL and save it into a dataframe.
 
 ```python
@@ -107,8 +80,6 @@ We set the `limit` parameter to a large number so all outlets are included in th
 
 Headers are set exactly like how a Chrome web browser makes the request to validate our identity.
 
-> You may refer to the source code on [GitHub](https://github.com/hewliyang/misc/blob/main/msia-fastfood/utils/scraper.py) for the remaining functions.
-
 ## Plotting the Data
 
 Requirements:
@@ -124,7 +95,7 @@ The prior can be accessed as a `.geojson` file from the [Department of Statistic
 
 The latter is included in the data we scraped earlier.
 
-### Data Prep
+### Data Preperation
 
 We simply read in the geodata using `geopandas`.
 
@@ -144,7 +115,7 @@ Now we need to create `POINT` objects from the coordinates and save it as a `Geo
 kfc_geo = gpd.GeoDataFrame(kfc, geometry=gpd.points_from_xy(kfc.long, kfc.lat))
 ```
 
-### Ploting
+### Plotting
 
 
 ```python
@@ -159,11 +130,35 @@ state_geo.plot(ax=ax, edgecolor="black", linewidth=1, color="white")
 kfc_geo.plot(ax=ax, color="red", alpha=0.4)
 ```
 
-Finally, we get our result.
-
 ![Outlet location plot for KFC](../../kfc-plot.png)
 
 > For the complete code, check out the notebook on [GitHub](https://github.com/hewliyang/misc/blob/main/msia-fastfood/dev.ipynb)
+
+Repeating the same for all other outlets and export it to the image tool of your choice to come up with a neat infographic.
+For the `GIF` below, I used good old **Microsoft PowerPoint** after exporting the `matplotlib` images from the notebook.
+
+I'm sure this would have been possible to do purely in Python as well, perhaps with `opencv` and `ffmpeg`, but it didn't seem worth the 
+effort for me.
+
+![Fast Food Malaysia Counts 2022](../../fast-food.gif)
+
+
+### Conclusion
+
+You will find yourself saving lots of time while scraping data by checking fetch requests in your browser first. Only if you are not able to: 
+
+1. Find the correct **API**
+2. The content you are looking for is **statically rendered** 
+
+should you resort to using things like a headless browser like `selenium` & HTML parsers like `beautifulsoup`.
+
+> **Statically rendered** content refers to data that is already embedded within the `HTML` of a page before it leaves the **server** and reaches your **browser**
+
+We didn't see it in this scenario, but some API's are **paginated**. This means that only a limited amount of data is loaded at one time, for example outlet $1 \rightarrow 10$, then $11 \rightarrow 20$ and so on in order to minimize loading times on user devices as well as reducing load on servers.
+
+You may find that the **size** of these pages are limited to a certain number, say $N$ for similar reasons. In this case, you would need to write a run a loop to programatically walk from page $1$ to page $K$, assuming the total number of items is $K$. Then, we also know that the total number of requests made would be $K \bmod N$
+
+
 
 
 

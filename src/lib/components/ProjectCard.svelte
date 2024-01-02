@@ -27,7 +27,7 @@
 	<div class="mt-auto flex text-pretty font-mono text-sm text-muted-foreground">
 		<div class="mt-2 flex flex-wrap gap-1">
 			{#each project.tags as tag}
-				<Badge>{tag}</Badge>
+				<Badge class="px-1 py-0 font-mono text-[10px]">{tag}</Badge>
 			{/each}
 		</div>
 	</div>
