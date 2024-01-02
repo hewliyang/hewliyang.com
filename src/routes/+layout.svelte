@@ -9,16 +9,6 @@
 
 <ModeWatcher />
 
-<svelte:head>
-	{#if !dev}
-		<script>
-			async
-			src="https://umami.hewliyang.tech/script.js"
-			data-website-id="d6998608-6fea-427f-a123-c562f07e20be"
-		</script>
-	{/if}
-</svelte:head>
-
 <div class="mx-auto mb-40 mt-8 flex max-w-2xl flex-col">
 	<Header />
 	<main class="flex-1">

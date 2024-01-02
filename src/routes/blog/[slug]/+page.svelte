@@ -28,6 +28,6 @@
 	<div
 		class="prose-quoteless prose prose-zinc dark:prose-invert prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-inline-code:rounded prose-inline-code:border prose-inline-code:before:hidden prose-inline-code:after:hidden"
 	>
-		<svelte:component this={data.content} class="prose dark:prose-invert" />
+		<svelte:component this={data.content} />
 	</div>
 </article>

@@ -1,0 +1,170 @@
+---
+title: Scrape & Visualize Fast Food Outlets
+date: '2022-12-25'
+description: Reverse engineer the typical "Find-A-Store" section of websites like McDonalds, KFC, Pizza Hut to get outlet data.
+published: true
+---
+
+![Fast Food Malaysia Counts 2022](../../fast-food.gif)
+
+## Quick Start
+
+The complete code can be imported as utility functions for ease of use. 
+
+Firstly, clone my repository
+
+```bash
+git clone https://github.com/hewliyang/misc.git
+```
+The only dependency required is `pandas`.
+
+Enter the `msia-fastfood` directory. From here, you can setup a Python script or Jupyter Notebook and use the functions as follows
+
+```python
+import pandas as pd
+from utils.scraper import get_mcd
+
+mcd_df = get_mcd()
+```
+
+The `get_<Franchise>()` functions return a `pd.DataFrame` object. Note that all this data is retrieved straight from the websites and
+no cleaning has been done. To see what attributes are available:
+
+```python
+mcd_df.columns
+```
+
+## Reverse Engineering
+
+### KFC
+
+Consider the Find-A-KFC [page](https://kfc.com.my/find-my-kfc)
+
+![Find a KFC Webpage](../../find-a-kfc.png)
+
+This webpage obviously has to pull the outlet location data from a backend somewhere. We can sniff out the API using Chrome DevTools. 
+Hit F12, navigate to the **Network** tab and refresh the page. Filter the outputs by **Fetch/XHR**.
+
+![Chrome Devtools](../../dev-tools.png)
+
+Now we need to identify the correct query that was made for the outlet locations. Intuitively it should be the one with the largest
+payload. Verify by checking its contents.
+
+![Chrome Devtools](../../dev-tools-2.png)
+
+From here, simply copy the URL of the request. We are now ready to get this data from the URL and save it into a dataframe.
+
+```python
+import requests
+import pandas as pd
+
+KFC = "<INPUT THE URL YOU COPIED HERE>"
+
+def get_kfc(URL: str = KFC) -> pd.DataFrame:
+    r = requests.get(URL)
+    data = r.json()["data"]["allLocation"]["locations"]
+    return pd.DataFrame(data)
+```
+
+### McD, Pizza Hut, Dominos
+
+Note that some of the API's require the user to specify
+- request parameters (ie: limit, region, etc)
+- request headers
+
+Most of these can also be copied from the DevTools page. 
+
+Consider the following code to extract locations from Pizza Hut.
+
+```python
+def get_pizza_hut(URL: str = PIZZA_HUT) -> pd.DataFrame:
+
+    headers = {
+        "accept": "application/json, text/plain, */*",
+        "accept-language": "en-US,en;q=0.9",
+        "client": "236e3ed4-3038-441a-be5b-417871eb84d4",
+        "lang": "en",
+        "sec-ch-ua": "\"Not?A_Brand\";v=\"8\", \"Chromium\";v=\"108\", \"Google Chrome\";v=\"108\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "cross-site",
+        "Referer": "https://www.pizzahut.com.my/",
+        "Referrer-Policy": "strict-origin-when-cross-origin"
+    }
+
+    payload = {
+    "limit": 100000000000
+    }
+
+    r = requests.get(URL, headers=headers, params=payload).json()
+
+    return pd.DataFrame(r["data"]["items"])
+```
+
+We set the `limit` parameter to a large number so all outlets are included in the response.
+
+Headers are set exactly like how a Chrome web browser makes the request to validate our identity.
+
+> You may refer to the source code on [GitHub](https://github.com/hewliyang/misc/blob/main/msia-fastfood/utils/scraper.py) for the remaining functions.
+
+## Plotting the Data
+
+Requirements:
+- `geopandas`
+- `matplotlib`
+- `shapely`
+
+We will need two sets of data:
+- Geographical boundaries of Malaysia
+- Latitude and longitudes of the outlets
+
+The prior can be accessed as a `.geojson` file from the [Department of Statistics, Malaysia](https://raw.githubusercontent.com/dosm-malaysia/data-open/main/datasets/geodata/administrative_1_state.geojson).
+
+The latter is included in the data we scraped earlier.
+
+### Data Prep
+
+We simply read in the geodata using `geopandas`.
+
+```python
+STATE_URL = "https://raw.githubusercontent.com/dosm-malaysia/data-open/main/datasets/geodata/administrative_1_state.geojson"
+state_geo = gpd.read_file(STATE_URL)
+```
+
+Use the function we created earlier to get `lat` & `long` of the outlets.
+```python
+kfc = get_kfc()[['address', 'gesStoreId','lat', 'locationId','long', 'name', 'state']]
+```
+
+Now we need to create `POINT` objects from the coordinates and save it as a `GeoDataFrame`
+
+```python
+kfc_geo = gpd.GeoDataFrame(kfc, geometry=gpd.points_from_xy(kfc.long, kfc.lat))
+```
+
+### Ploting
+
+
+```python
+fig, ax = plt.subplots()
+ax.axis('off')
+
+# Layer 1 : plot geographic boundaries
+state_geo.plot(ax=ax, edgecolor="black", linewidth=1, color="white")
+
+# Layer 2 : outlet locations as scatter
+# Set the alpha low so we can differentiate denser areas
+kfc_geo.plot(ax=ax, color="red", alpha=0.4)
+```
+
+Finally, we get our result.
+
+![Outlet location plot for KFC](../../kfc-plot.png)
+
+> For the complete code, check out the notebook on [GitHub](https://github.com/hewliyang/misc/blob/main/msia-fastfood/dev.ipynb)
+
+
+
+

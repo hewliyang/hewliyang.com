@@ -1,6 +1,6 @@
 ---
-title: '2023 Blog Refresh'
-date: '2023-11-19'
+title: '2024 Blog Refresh'
+date: '2024-01-01'
 description: 'Including some of my latest hot takes (okay they are pretty mild).'
 published: true
 ---

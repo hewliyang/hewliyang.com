@@ -4,7 +4,7 @@
 	import { Hand } from 'lucide-svelte';
 	import { formatDate } from '$lib/utils.js';
 	import { Badge } from '$lib/components/ui/badge';
-
+	import { ExclamationTriangle } from 'radix-icons-svelte';
 	export let data;
 </script>
 
@@ -27,16 +27,22 @@
 		</Alert.Description>
 	</Alert.Root>
 
+	<Alert.Root variant="destructive">
+		<ExclamationTriangle class="h-4 w-4" />
+		<Alert.Title>Work In Progress</Alert.Title>
+		<Alert.Description>Still working on porting content over from my old site!</Alert.Description>
+	</Alert.Root>
+
 	<h2 class="font-mono text-lg tracking-tighter">Blog</h2>
 	<section>
 		<ul class="space-y-4">
 			{#each data.posts as post}
 				<li>
-					<div class="mb-1 flex items-center justify-between">
+					<div class="max-w-5/8 mb-2 flex items-center justify-between md:max-w-none">
 						<a class="font-medium underline underline-offset-4" href="blog/{post.slug}"
 							>{post.title}</a
 						>
-						<Badge class="text-xs tracking-tight">{formatDate(post.date)}</Badge>
+						<Badge class="min-w-fit text-xs tracking-tight">{formatDate(post.date)}</Badge>
 					</div>
 					<p class="text-muted-foreground">{post.description}</p>
 				</li>
