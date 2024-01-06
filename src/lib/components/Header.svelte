@@ -12,7 +12,11 @@
 				<a href="/" class="text-lg font-bold">{config.title}</a>
 				<span
 					>data science @
-					<a class="underline" target="_blank" href="https://nus.edu.sg">NUS</a>
+					<a
+						class="font-mono font-semibold tracking-wide underline"
+						target="_blank"
+						href="https://nus.edu.sg">NUS</a
+					>
 				</span>
 			</div>
 		</div>

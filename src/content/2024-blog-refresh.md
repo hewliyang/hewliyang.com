@@ -11,7 +11,6 @@ I updated my blog this weekend and wanted to share some thoughts along the way:
 - [Performance](#performance)
 - [Opinions](#opinions)
 
-
 > **Disclaimer:** My site is my “breakable toy”. I enjoy and _intentionally_ change technology and try new patterns here. I'd encourage you to do the same and then write about why you made those choices.
 
 ## Content Management
@@ -46,29 +45,29 @@ import fs from 'fs';
 import path from 'path';
 
 function getMDXFiles(dir) {
-  return fs.readdirSync(dir).filter((file) => path.extname(file) === '.mdx');
+	return fs.readdirSync(dir).filter((file) => path.extname(file) === '.mdx');
 }
 
 function readMDXFile(filePath) {
-  let rawContent = fs.readFileSync(filePath, 'utf-8');
-  return parseFrontmatter(rawContent);
+	let rawContent = fs.readFileSync(filePath, 'utf-8');
+	return parseFrontmatter(rawContent);
 }
 
 function getMDXData(dir) {
-  let mdxFiles = getMDXFiles(dir);
-  return mdxFiles.map((file) => {
-    let { metadata, content } = readMDXFile(path.join(dir, file));
-    let slug = path.basename(file, path.extname(file));
-    return {
-      metadata,
-      slug,
-      content,
-    };
-  });
+	let mdxFiles = getMDXFiles(dir);
+	return mdxFiles.map((file) => {
+		let { metadata, content } = readMDXFile(path.join(dir, file));
+		let slug = path.basename(file, path.extname(file));
+		return {
+			metadata,
+			slug,
+			content
+		};
+	});
 }
 
 export function getBlogPosts() {
-  return getMDXData(path.join(process.cwd(), 'content'));
+	return getMDXData(path.join(process.cwd(), 'content'));
 }
 ```
 
@@ -83,39 +82,39 @@ import { highlight } from 'sugar-high'; // 1KB new dependency
 
 // This replaces rehype-pretty-code and shiki
 function Code({ children, ...props }) {
-  let codeHTML = highlight(children);
-  return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
+	let codeHTML = highlight(children);
+	return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
 }
 
 // This replaces rehype-slug
 function slugify(str) {
-  return str
-    .toString()
-    .toLowerCase()
-    .trim() // Remove whitespace from both ends of a string
-    .replace(/\s+/g, '-') // Replace spaces with -
-    .replace(/&/g, '-and-') // Replace & with 'and'
-    .replace(/[^\w\-]+/g, '') // Remove all non-word characters except for -
-    .replace(/\-\-+/g, '-'); // Replace multiple - with single -
+	return str
+		.toString()
+		.toLowerCase()
+		.trim() // Remove whitespace from both ends of a string
+		.replace(/\s+/g, '-') // Replace spaces with -
+		.replace(/&/g, '-and-') // Replace & with 'and'
+		.replace(/[^\w\-]+/g, '') // Remove all non-word characters except for -
+		.replace(/\-\-+/g, '-'); // Replace multiple - with single -
 }
 
 // This replaces rehype-autolink-headings
 function createHeading(level) {
-  return ({ children }) => {
-    let slug = slugify(children);
-    return React.createElement(
-      `h${level}`,
-      { id: slug },
-      [
-        React.createElement('a', {
-          href: `#${slug}`,
-          key: `link-${slug}`,
-          className: 'anchor',
-        }),
-      ],
-      children
-    );
-  };
+	return ({ children }) => {
+		let slug = slugify(children);
+		return React.createElement(
+			`h${level}`,
+			{ id: slug },
+			[
+				React.createElement('a', {
+					href: `#${slug}`,
+					key: `link-${slug}`,
+					className: 'anchor'
+				})
+			],
+			children
+		);
+	};
 }
 ```
 
@@ -123,25 +122,23 @@ Oh and that `remark-gfm` I was using for the GitHub style Markdown tables? Again
 
 ```jsx
 function Table({ data }) {
-  let headers = data.headers.map((header, index) => (
-    <th key={index}>{header}</th>
-  ));
-  let rows = data.rows.map((row, index) => (
-    <tr key={index}>
-      {row.map((cell, cellIndex) => (
-        <td key={cellIndex}>{cell}</td>
-      ))}
-    </tr>
-  ));
+	let headers = data.headers.map((header, index) => <th key={index}>{header}</th>);
+	let rows = data.rows.map((row, index) => (
+		<tr key={index}>
+			{row.map((cell, cellIndex) => (
+				<td key={cellIndex}>{cell}</td>
+			))}
+		</tr>
+	));
 
-  return (
-    <table>
-      <thead>
-        <tr>{headers}</tr>
-      </thead>
-      <tbody>{rows}</tbody>
-    </table>
-  );
+	return (
+		<table>
+			<thead>
+				<tr>{headers}</tr>
+			</thead>
+			<tbody>{rows}</tbody>
+		</table>
+	);
 }
 ```
 
@@ -171,10 +168,10 @@ Another example is on [my work page](https://leerob.io/work). I love that I can 
 
 ```jsx
 async function Stars() {
-  let res = await fetch('https://api.github.com/repos/vercel/next.js');
-  let json = await res.json();
-  let count = Math.round(json.stargazers_count / 1000);
-  return `${count}k stars`;
+	let res = await fetch('https://api.github.com/repos/vercel/next.js');
+	let json = await res.json();
+	let count = Math.round(json.stargazers_count / 1000);
+	return `${count}k stars`;
 }
 ```
 
@@ -186,23 +183,23 @@ For example, 98% of this blog post page is work that can be prerendering during 
 
 ```tsx
 async function Views({ slug }: { slug: string }) {
-  let views = await getViewsCount();
-  incrementViews(slug);
-  // ...
+	let views = await getViewsCount();
+	incrementViews(slug);
+	// ...
 }
 
 export default function Blog({ params }) {
-  let post = getBlogPosts().find((post) => post.slug === params.slug);
-  // ...
+	let post = getBlogPosts().find((post) => post.slug === params.slug);
+	// ...
 
-  return (
-    <section>
-      <Suspense fallback={<p className="h-5" />}>
-        <Views slug={post.slug} />
-      </Suspense>
-      <article>{post.content}</article>
-    </section>
-  );
+	return (
+		<section>
+			<Suspense fallback={<p className="h-5" />}>
+				<Views slug={post.slug} />
+			</Suspense>
+			<article>{post.content}</article>
+		</section>
+	);
 }
 ```
 
@@ -240,7 +237,6 @@ export async function increment(slug: string) {
 ```
 
 I'm really happy with this approach. In the past, I had to include more dependencies like `swr` and add additional client-side JavaScript to achieve this. Partial Prerendering feels fast, without giving up the dynamic view counts that I love.
-
 
 ## Opinions
 

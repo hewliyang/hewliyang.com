@@ -13,7 +13,7 @@ Navigate to the **Find-A-KFC** [page](https://kfc.com.my/find-my-kfc)
 
 ![Find a KFC Webpage](../../find-a-kfc.png)
 
-This webpage has to pull the outlet location data from a backend somewhere. We can sniff out the API using Chrome DevTools. 
+This webpage has to pull the outlet location data from a backend somewhere. We can sniff out the API using Chrome DevTools.
 Hit F12, navigate to the **Network** tab and refresh the page. Filter the outputs by **Fetch/XHR**.
 
 ![Chrome Devtools](../../dev-tools.png)
@@ -42,10 +42,11 @@ def get_kfc(URL: str = KFC) -> pd.DataFrame:
 ### McD, Pizza Hut, Dominos
 
 Note that some of the API's require the user to specify
+
 - request parameters (ie: limit, region, etc)
 - request headers
 
-Most of these can also be copied from the DevTools page. 
+Most of these can also be copied from the DevTools page.
 
 Consider the following code to extract locations from Pizza Hut.
 
@@ -83,11 +84,13 @@ Headers are set exactly like how a Chrome web browser makes the request to valid
 ## Plotting the Data
 
 Requirements:
+
 - `geopandas`
 - `matplotlib`
 - `shapely`
 
 We will need two sets of data:
+
 - Geographical boundaries of Malaysia
 - Latitude and longitudes of the outlets
 
@@ -105,6 +108,7 @@ state_geo = gpd.read_file(STATE_URL)
 ```
 
 Use the function we created earlier to get `lat` & `long` of the outlets.
+
 ```python
 kfc = get_kfc()[['address', 'gesStoreId','lat', 'locationId','long', 'name', 'state']]
 ```
@@ -116,7 +120,6 @@ kfc_geo = gpd.GeoDataFrame(kfc, geometry=gpd.points_from_xy(kfc.long, kfc.lat))
 ```
 
 ### Plotting
-
 
 ```python
 fig, ax = plt.subplots()
@@ -137,18 +140,17 @@ kfc_geo.plot(ax=ax, color="red", alpha=0.4)
 Repeating the same for all other outlets and export it to the image tool of your choice to come up with a neat infographic.
 For the `GIF` below, I used good old **Microsoft PowerPoint** after exporting the `matplotlib` images from the notebook.
 
-I'm sure this would have been possible to do purely in Python as well, perhaps with `opencv` and `ffmpeg`, but it didn't seem worth the 
+I'm sure this would have been possible to do purely in Python as well, perhaps with `opencv` and `ffmpeg`, but it didn't seem worth the
 effort for me.
 
 ![Fast Food Malaysia Counts 2022](../../fast-food.gif)
 
-
 ### Conclusion
 
-You will find yourself saving lots of time while scraping data by checking fetch requests in your browser first. Only if you are not able to: 
+You will find yourself saving lots of time while scraping data by checking fetch requests in your browser first. Only if you are not able to:
 
 1. Find the correct **API**
-2. The content you are looking for is **statically rendered** 
+2. The content you are looking for is **statically rendered**
 
 should you resort to using things like a headless browser like `selenium` & HTML parsers like `beautifulsoup`.
 
@@ -157,9 +159,3 @@ should you resort to using things like a headless browser like `selenium` & HTML
 We didn't see it in this scenario, but some API's are **paginated**. This means that only a limited amount of data is loaded at one time, for example outlet $1 \rightarrow 10$, then $11 \rightarrow 20$ and so on in order to minimize loading times on user devices as well as reducing load on servers.
 
 You may find that the **size** of these pages are limited to a certain number, say $N$ for similar reasons. In this case, you would need to write a run a loop to programatically walk from page $1$ to page $K$, assuming the total number of items is $K$. Then, we also know that the total number of requests made would be $K \bmod N$
-
-
-
-
-
-
