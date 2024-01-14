@@ -1,5 +1,6 @@
+import plugin from 'tailwindcss/plugin';
+import typography from '@tailwindcss/typography';
 import { fontFamily } from 'tailwindcss/defaultTheme';
-const plugin = require('tailwindcss/plugin');
 
 /** @type {import('tailwindcss').Config} */
 const config = {
@@ -7,7 +8,7 @@ const config = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	safelist: ['dark'],
 	plugins: [
-		require('@tailwindcss/typography'),
+		typography,
 		plugin(function ({ addVariant }) {
 			addVariant(
 				'prose-inline-code',

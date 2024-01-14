@@ -27,12 +27,6 @@
 		</Alert.Description>
 	</Alert.Root>
 
-	<Alert.Root variant="destructive" class="border-dashed">
-		<ExclamationTriangle class="h-4 w-4" />
-		<Alert.Title>Work In Progress</Alert.Title>
-		<Alert.Description>Still working on porting content over from my old site!</Alert.Description>
-	</Alert.Root>
-
 	<h2 class="font-mono text-lg tracking-tighter">Blog</h2>
 	<section>
 		<ul class="space-y-4">

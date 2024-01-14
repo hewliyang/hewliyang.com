@@ -2,6 +2,8 @@ import shiki from 'shiki';
 import adapter from '@sveltejs/adapter-auto';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex-svelte';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { mdsvex, escapeSvelte } from 'mdsvex';
 
@@ -19,7 +21,7 @@ const mdsvexOptions = {
 		}
 	},
 	remarkPlugins: [remarkMath],
-	rehypePlugins: [rehypeKatex],
+	rehypePlugins: [rehypeKatex, rehypeSlug, rehypeAutolinkHeadings],
 	smartypants: true
 };
 
