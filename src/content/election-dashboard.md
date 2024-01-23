@@ -1,6 +1,6 @@
 ---
 title: Streamlit at It's Limits & Interactive Geospatial Visualisations
-date: '2022-12-28'
+date: '2022-12-25'
 description: Complex interactive charts with ECharts & Plotly, custom UI elements with Bootstrap & deployment shenanigans
 published: true
 ---
@@ -108,7 +108,7 @@ For the discrete choropleth of winning parties by jurisdiction, I decided to use
 
 ### Data Preparation
 
-> You may or may not have noticed but I displaced **East Malaysia** significantly to the left and slightly downwards for a better vertical viewing experience. The way I did this is simply grouping each feature by it's `state` then adding the corresponding constants to each latitude and longitude. This code is ommited.
+> You may or may not have noticed but I displaced **East Malaysia** significantly to the left and slightly downwards for a better vertical viewing experience. The way I did this is simply grouping each feature by it's `state` then adding the corresponding constants to each latitude and longitude. This code is omitted.
 
 If you are coming from a Python background haven't made visualizations with raw **Javascript** before, this might be a little foreign. You'll find that the API is alot more verbose than using packages like `matplotlib` and `plotly`. There is also a lot less auto-inference for things such as random color assignment for discrete variables.
 
@@ -252,7 +252,7 @@ def result_card(
     """
 ```
 
-The HTML uses **Bootstrap** utility classes so we need to inject it's [**CSS**](https://getbootstrap.com/docs/4.3/getting-started/download/) using the same trick you see below but instead with a `<script />` tag.
+This HTML uses **Bootstrap** utility classes so we need to inject it's [**CSS**](https://getbootstrap.com/docs/4.3/getting-started/download/) using the same trick you see below but instead with a `<link />` tag.
 
 Finally, the cards can be displayed using
 

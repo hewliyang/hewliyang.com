@@ -1,6 +1,6 @@
 ---
 title: Visualizing Fast Food Outlet Density
-date: '2022-12-25'
+date: '2022-12-28'
 description: Reverse engineer API's for websites like McDonalds, KFC, Pizza Hut for hassle-free scraping.
 published: true
 ---
