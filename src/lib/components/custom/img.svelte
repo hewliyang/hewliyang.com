@@ -3,11 +3,11 @@
 	export let alt: string;
 </script>
 
-<div>
+<div class="flex justify-center">
 	<img
 		{src}
 		{alt}
-		class="self-center rounded-lg border border-dashed border-gray-900 dark:border-gray-300"
+		class="rounded-lg border border-dashed border-gray-900 dark:border-gray-300"
 		loading="lazy"
 	/>
 </div>

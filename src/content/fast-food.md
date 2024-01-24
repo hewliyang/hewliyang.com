@@ -5,7 +5,11 @@ description: Reverse engineer API's for websites like McDonalds, KFC, Pizza Hut 
 published: true
 ---
 
-The process is very similar for almost all websites thanks to the **client server model** in web development. Lets consider **KFC** as an example.
+I recently stumbled on a fascinating [post](https://www.linkedin.com/posts/aziff90_mcdonalds-and-its-role-in-malaysias-urban-activity-7013289618942955520-J2UW/?trk=public_profile_like_view) where the number of McDonald's outlets was used as measure of economic development / urbanization of a given area within Malaysia.
+
+It turns out that the author manually collated all the data himself in an excel sheet, even missing out on a few newer outlets.
+
+This post details how to programatically scrape outlet data for any fast food chain you'd like, and then producing visualisations and analysis based on the data.
 
 ### KFC
 

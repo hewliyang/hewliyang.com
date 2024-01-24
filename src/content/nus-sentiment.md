@@ -67,7 +67,7 @@ def scrape(keyword: str) -> pd.DataFrame:
           )
         )
 
-        # BFS through the
+        # DFS
         while len(comments_list) > 0:
             comment = comments_list.pop(0)
             if isValidComment(comment): # check if post is by a bot or [deleted]
