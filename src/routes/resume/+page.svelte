@@ -2,7 +2,9 @@
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import WorkCard from '$lib/components/WorkCard.svelte';
 	import { Badge } from '$lib/components/ui/badge';
+	import { buttonVariants } from '$lib/components/ui/button/';
 	import { skills, educations, works, projects, title } from '$lib/config';
+	import { FileText } from 'lucide-svelte';
 </script>
 
 <svelte:head>
@@ -11,6 +13,10 @@
 
 <div class="mt-6 space-y-6">
 	<section class="flex min-h-0 flex-col gap-y-3">
+		<a href="/resume.pdf" class={buttonVariants({ variant: 'outline' })}>
+			<FileText />
+			<span>PDF</span>
+		</a>
 		<h2 class="text-xl font-bold">Education</h2>
 		{#each educations as education}
 			<div class="rounded-lg bg-card text-card-foreground">
