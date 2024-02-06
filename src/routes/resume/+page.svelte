@@ -13,10 +13,6 @@
 
 <div class="mt-6 space-y-6">
 	<section class="flex min-h-0 flex-col gap-y-3">
-		<a href="/resume.pdf" class={buttonVariants({ variant: 'outline' })}>
-			<FileText />
-			<span>PDF</span>
-		</a>
 		<h2 class="text-xl font-bold">Education</h2>
 		{#each educations as education}
 			<div class="rounded-lg bg-card text-card-foreground">
