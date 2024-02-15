@@ -35,6 +35,22 @@ export const educations = [
 
 export const works = [
 	{
+		company: 'NCS Group',
+		description: 'Researching the optimization of energy use in a water chilled data center',
+		isInternship: false,
+		position: 'Undergraduate Researcher',
+		from: 'Jan 2024',
+		to: 'Present'
+	},
+	{
+		company: 'Potion',
+		description: 'Researching automated evaluations for text-to-speech (TTS) models',
+		isInternship: false,
+		position: 'Undergraduate Researcher',
+		from: 'Jan 2024',
+		to: 'Present'
+	},
+	{
 		company: 'GIC',
 		description:
 			'Building & deploying LLM-driven full stack applications across the organization. Maintaining a internal Python package for LLM orchestration including CI/CD & unit testing.',
@@ -52,7 +68,7 @@ export const works = [
 		to: 'June 2023'
 	},
 	{
-		company: 'National University of Singapore',
+		company: 'National University of Singapore (NUS)',
 		position: 'Teaching Assistant',
 		description:
 			'Prepare model answers to tutorials in LaTeX for ST1131 (Introduction to Statistical Computing)',
@@ -63,6 +79,12 @@ export const works = [
 ] satisfies Work[];
 
 export const projects = [
+	{
+		title: 'autograd-ui',
+		description: 'Education tool for visualizing automatic differentiation during backpropgation',
+		href: 'https://github.com/hewliyang/autograd-ui',
+		tags: ['Svelte', 'xyflow', 'Typescript']
+	},
 	{
 		title: 'dsa3101-2210-14-lta',
 		description: 'Object detection for traffic observability on Singaporean highways',

@@ -1,10 +1,9 @@
 <script lang="ts">
 	import * as Alert from '$lib/components/ui/alert';
 	import * as config from '$lib/config';
-	import { Hand } from 'lucide-svelte';
 	import { formatDate } from '$lib/utils.js';
 	import { Badge } from '$lib/components/ui/badge';
-	import { ExclamationTriangle } from 'radix-icons-svelte';
+	import { buttonVariants } from '$lib/components/ui/button';
 	export let data;
 </script>
 
@@ -14,16 +13,15 @@
 
 <article class="space-y-4 pt-6">
 	<Alert.Root>
-		<Hand class="h-4 w-4" />
-		<Alert.Title>Hi there!</Alert.Title>
-		<Alert.Description>
-			I'm Li Yang. A final year undergraduate and aspiring engineering professional with significant
-			<a class="rounded-lg border border-dashed px-1 font-mono underline" href="/resume">exposure</a
-			>
-			to the
-			<span class="font-bold">full stack</span>
-			and
-			<span class="font-bold">machine learning</span>
+		<Alert.Title class="text-lg">Hi there 👋</Alert.Title>
+		<Alert.Description class="space-y-3 text-sm">
+			<p>
+				I'm Li Yang. A final year undergraduate at the National University of Singapore. I'm
+				interested in software engineering, machine learning and it's applications.
+			</p>
+			<a href="/resume" class={buttonVariants({ variant: 'outline', class: 'w-full' })}>
+				Resume &rarr;
+			</a>
 		</Alert.Description>
 	</Alert.Root>
 

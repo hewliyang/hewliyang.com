@@ -2,9 +2,8 @@
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import WorkCard from '$lib/components/WorkCard.svelte';
 	import { Badge } from '$lib/components/ui/badge';
-	import { buttonVariants } from '$lib/components/ui/button/';
+	import { Github } from 'lucide-svelte';
 	import { skills, educations, works, projects, title } from '$lib/config';
-	import { FileText } from 'lucide-svelte';
 </script>
 
 <svelte:head>
@@ -43,7 +42,7 @@
 		{/each}
 	</section>
 	<section class="print-force-new-page flex min-h-0 scroll-mb-16 flex-col gap-y-3">
-		<h2 class="text-xl font-bold">Projects</h2>
+		<h2 class="flex items-center gap-4 text-xl font-bold">Projects <Github class="h-6 w-6" /></h2>
 		<div class="grid grid-cols-1 gap-3 print:grid-cols-2 print:gap-2 md:grid-cols-2 lg:grid-cols-2">
 			{#each projects as project}
 				<ProjectCard {project} />

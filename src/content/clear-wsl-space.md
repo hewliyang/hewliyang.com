@@ -75,10 +75,10 @@ wsl --terminate ubuntu
 # this should spawn another shell, ie: the diskpart CLI
 diskpart
 
-DISKPART> select vdisk file=%USERPROFILE%\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\LocalState\ext4.vhdx
+DISKPART> select vdisk file=%USERPROFILE%\\AppData\\Local\\Packages\\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\\LocalState\\ext4.vhdx
 DISKPART> compact vdisk
 ```
 
-> This exact path might not work for you. It depends on which Linux distribution / version you have installed. Go to `C:\Users\{your_user}\AppData\Local\Packages\CanonicalGroupLimited...` to browse around and look for the `ext4.vhdx` file. Credit to this guy on [Reddit](https://www.reddit.com/r/bashonubuntuonwindows/comments/goodh4/deleting_a_directory_in_wsl_to_free_up_disk_space/)
+> This exact path might not work for you. It depends on which Linux distribution / version you have installed. Go to `C:\Users\{your_user}\AppData\Local\Packages\...` to browse around and look for the `ext4.vhdx` file. Credit to this guy on [Reddit](https://www.reddit.com/r/bashonubuntuonwindows/comments/goodh4/deleting_a_directory_in_wsl_to_free_up_disk_space/)
 
 Now, you should see the space savings reflected in your file explorer.
