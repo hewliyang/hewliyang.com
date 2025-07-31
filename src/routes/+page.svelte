@@ -16,5 +16,4 @@
 		<Introduction />
 		<GithubActivity data={data.github} />
 	</div>
-	<p></p>
 </div>
