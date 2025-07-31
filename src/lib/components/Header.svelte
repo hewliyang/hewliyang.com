@@ -1,7 +1,6 @@
 <script lang="ts">
-	import { Github } from 'lucide-svelte';
-	import { X } from '$lib/components/icons';
-	import { Button } from '$lib/components/ui/button';
+	import { Github, Pencil, Scroll } from 'lucide-svelte';
+	import { Button, buttonVariants } from '$lib/components/ui/button';
 	import Theme from '$lib/components/Theme.svelte';
 	import * as config from '$lib/config';
 </script>
@@ -14,10 +13,15 @@
 			</div>
 		</div>
 
-		<div class="flex items-center">
-			<Button href="https://twitter.com/hewliyang" target="_blank" variant="ghost" size="icon">
-				<X class="h-4 w-4" />
-			</Button>
+		<div class="flex items-center space-x-2">
+			<a href="/blog" class={buttonVariants({ variant: 'ghost' })}>
+				<Pencil class="mr-2 size-3" />
+				<span>Blog</span>
+			</a>
+			<a href="/resume" class={buttonVariants({ variant: 'ghost' })}>
+				<Scroll class="mr-2 size-3" />
+				<span>Resume</span>
+			</a>
 			<Button href="https://github.com/hewliyang" target="_blank" variant="ghost" size="icon">
 				<Github class="h-4 w-4" />
 			</Button>

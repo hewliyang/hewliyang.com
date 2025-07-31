@@ -7,8 +7,6 @@ published: true
 
 So you use WSL and are continuously losing space on your precious SSD. The following steps may help you recover some of that.
 
----
-
 ### Tools
 
 Firstly some tips on how to see what exactly is eating up your gigabytes.
