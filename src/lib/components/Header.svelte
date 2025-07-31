@@ -14,15 +14,15 @@
 		</div>
 
 		<div class="flex items-center space-x-2">
-			<a href="/blog" class={buttonVariants({ variant: 'ghost' })}>
+			<a href="/blog" class={buttonVariants({ variant: 'outline', size: 'sm' })}>
 				<Pencil class="mr-2 size-3" />
 				<span>Blog</span>
 			</a>
-			<a href="/resume" class={buttonVariants({ variant: 'ghost' })}>
+			<a href="/resume" class={buttonVariants({ variant: 'outline', size: 'sm' })}>
 				<Scroll class="mr-2 size-3" />
 				<span>Resume</span>
 			</a>
-			<Button href="https://github.com/hewliyang" target="_blank" variant="ghost" size="icon">
+			<Button href="https://github.com/hewliyang" target="_blank" variant="outline" size="sm">
 				<Github class="h-4 w-4" />
 			</Button>
 			<Theme />

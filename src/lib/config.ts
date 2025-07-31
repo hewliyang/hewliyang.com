@@ -1,7 +1,7 @@
 import { dev } from '$app/environment';
 import type { Work, Education, Project } from '$lib/types';
 
-export const title = 'hewliyang';
+export const title = 'Hew Li Yang';
 export const description = "hewliyang's website";
 export const url = dev ? 'http://localhost:5173/' : 'https://hewliyang.com/';
 export const skills = [
