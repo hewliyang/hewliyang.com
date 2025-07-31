@@ -1,5 +1,5 @@
 import shiki from 'shiki';
-import adapter from '@sveltejs/adapter-cloudflare';
+import adapter from '@sveltejs/adapter-auto';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex-svelte';
 import rehypeSlug from 'rehype-slug';
