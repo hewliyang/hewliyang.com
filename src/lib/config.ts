@@ -2,38 +2,31 @@ import { dev } from '$app/environment';
 import type { Work, Education, Project } from '$lib/types';
 
 export const title = 'hewliyang';
-export const description = "Li Yang's blog";
+export const description = "hewliyang's website";
 export const url = dev ? 'http://localhost:5173/' : 'https://hewliyang.com/';
 export const skills = [
 	'Python',
-	'JavaScript',
-	'TypeScript',
-	'Svelte/SvelteKit',
-	'Java',
-	'R',
-	'Kubernetes',
-	'Helm',
-	'SQL',
-	'Streamlit',
-	'Torch/JAX',
-	'Transformers',
+	'JS/TS',
+	'Svelte',
+	'React',
+	'PGVector',
 	'FastAPI',
 	'Git',
 	'Docker',
-	'LaTeX',
-	'GitHub Actions'
+	'Github Actions',
+	'Terraform'
 ];
 
-export const educations = [
+export const educations: Education[] = [
 	{
-		degree: 'BSc (Hons.) Data Science & Analytics with a minor in Computer Science',
+		degree: 'Data Science & Analytics (CS Minor) Undergrad',
 		university: 'National University of Singapore',
-		from: '2020',
-		to: '2024'
+		from: 'Aug 2020',
+		to: 'Dec 2024'
 	}
-] satisfies Education[];
+];
 
-export const works = [
+export const works: Work[] = [
 	{
 		company: 'NCS Group',
 		description: 'Researching the optimization of energy use in a water chilled data center',
@@ -60,25 +53,16 @@ export const works = [
 		to: 'Dec 2023'
 	},
 	{
-		company: 'Infineon',
-		description: 'Data cleaning, OCR & training BERT-style models for text classification',
-		isInternship: true,
-		position: 'Data Science Intern',
-		from: 'May 2023',
-		to: 'June 2023'
-	},
-	{
 		company: 'National University of Singapore (NUS)',
 		position: 'Teaching Assistant',
-		description:
-			'Prepare model answers to tutorials in LaTeX for ST1131 (Introduction to Statistical Computing)',
+		description: 'ST1131 (Introduction to Statistical Computing)',
 		isInternship: false,
 		from: 'Aug 2022',
 		to: 'May 2023'
 	}
-] satisfies Work[];
+];
 
-export const projects = [
+export const projects: Project[] = [
 	{
 		title: 'autograd-ui',
 		description: 'Education tool for visualizing automatic differentiation during backpropgation',
@@ -126,4 +110,4 @@ export const projects = [
 			'remark'
 		]
 	}
-] satisfies Project[];
+];

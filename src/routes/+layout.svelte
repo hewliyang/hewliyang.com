@@ -4,12 +4,11 @@
 	import '@fontsource-variable/jetbrains-mono';
 	import Header from '$lib/components/Header.svelte';
 	import { ModeWatcher } from 'mode-watcher';
-	import { dev } from '$app/environment';
 </script>
 
 <ModeWatcher />
 
-<div class="mx-auto mb-40 mt-8 flex max-w-2xl flex-col">
+<div class="mx-auto mb-40 mt-8 flex max-w-3xl flex-col">
 	<Header />
 	<main class="flex-1">
 		<div class="container flex flex-col space-y-2">
