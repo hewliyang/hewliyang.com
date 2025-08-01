@@ -5,9 +5,7 @@ description: A Hack&Roll 23 winning project exploring text embeddings, vector se
 published: true
 ---
 
-My friends **Minh Tuan**, **Jake**, **Utkarsh** and I were one of the selected winners among over 400 participants and 100 submissions at [**Hack&Roll 2023**](https://hacknroll2023.devpost.com/). We each received a 24' monitor as our prizes 🥳
-
-![](../../hacknroll.jpg)
+My friends **Minh Tuan**, **Jake**, **Utkarsh** and I were one of the selected winners among over 400 participants and 100 submissions at [**Hack&Roll 2023**](https://hacknroll2023.devpost.com/).
 
 This post will detail what we built in the 24 hour duration.
 

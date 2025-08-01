@@ -4,7 +4,6 @@
 	import '@fontsource-variable/jetbrains-mono';
 	import Header from '$lib/components/Header.svelte';
 	import { ModeWatcher } from 'mode-watcher';
-	import { dev } from '$app/environment';
 </script>
 
 <ModeWatcher />

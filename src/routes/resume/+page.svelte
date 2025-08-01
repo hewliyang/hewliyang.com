@@ -43,7 +43,7 @@
 	</section>
 	<section class="print-force-new-page flex min-h-0 scroll-mb-16 flex-col gap-y-3">
 		<h2 class="flex items-center gap-4 text-xl font-bold">Projects <Github class="h-6 w-6" /></h2>
-		<div class="grid grid-cols-1 gap-3 print:grid-cols-2 print:gap-2 md:grid-cols-2 lg:grid-cols-2">
+		<div class="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-2 print:grid-cols-2 print:gap-2">
 			{#each projects as project}
 				<ProjectCard {project} />
 			{/each}
