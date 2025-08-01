@@ -27,4 +27,5 @@ export type Education = {
 	degree: string;
 	from: string;
 	to: string;
+	extra: string;
 };

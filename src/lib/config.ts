@@ -22,31 +22,67 @@ export const educations: Education[] = [
 		degree: 'Data Science & Analytics (CS Minor) Undergrad',
 		university: 'National University of Singapore',
 		from: 'Aug 2020',
-		to: 'Dec 2024'
+		to: 'Dec 2024',
+		extra: `Worked on learning to rate synthetic speech quality, published datasets on 🤗
+			<ul class="list-disc ml-4">
+				<li>
+					<a href="https://huggingface.co/datasets/hewliyang/nisqa-blizzard-challenge-mos" target="_blank" rel="noopener noreferrer" class="underline">
+						hewliyang/nisqa-blizzard-challenge-mos
+					</a>
+				</li>
+				<li>
+					<a href="https://huggingface.co/datasets/hewliyang/nisqa-vcc-mos" target="_blank" rel="noopener noreferrer" class="underline">
+						hewliyang/nisqa-vcc-mos
+					</a>
+				</li>
+			</ul>`
 	}
 ];
 
 export const works: Work[] = [
 	{
-		company: 'NCS Group',
-		description: 'Researching the optimization of energy use in a water chilled data center',
+		company: 'brightriver.ai',
+		description: `
+			<ul class="list-disc ml-4">
+				<li>
+					Joined as the 1st employee, scaled platform from zero across the full stack to serve over 30 institutional investors across over 10 firms.
+				</li>
+				<li>
+					Involved in all verticals including frontend, backend, product, design and research.
+				</li>
+				<li>
+					Primary focus in unstructured document search and agent scaffolding to suit domain requirements.
+				</li>
+			</ul>
+		`,
 		isInternship: false,
-		position: 'Undergraduate Researcher',
-		from: 'Jan 2024',
-		to: 'Present'
+		position: 'AI Engineer',
+		from: 'July 2024',
+		to: 'Now'
 	},
 	{
-		company: 'Potion',
-		description: 'Researching automated evaluations for text-to-speech (TTS) models',
-		isInternship: false,
-		position: 'Undergraduate Researcher',
+		company: 'NCS, IORA (NUS)',
+		description: `
+			<ul class="list-disc ml-4">
+				<li>
+					Policy research for optimizing energy use in data centers, causal inference on sensor data.
+				</li>
+			</ul>
+		`,
+		isInternship: true,
+		position: 'Research Engineer Intern',
 		from: 'Jan 2024',
-		to: 'Present'
+		to: 'June 2024'
 	},
 	{
 		company: 'GIC',
-		description:
-			'Building & deploying LLM-driven full stack applications across the organization. Maintaining a internal Python package for LLM orchestration including CI/CD & unit testing.',
+		description: `
+			<ul class="list-disc ml-4">
+				<li>
+					Building internal LLM SDKs, structured output pipelines and a natural language to kdb+q queries for our traders.
+				</li>
+			</ul>
+		`,
 		isInternship: true,
 		position: 'Machine Learning Engineer Intern',
 		from: 'June 2023',
@@ -55,7 +91,13 @@ export const works: Work[] = [
 	{
 		company: 'National University of Singapore (NUS)',
 		position: 'Teaching Assistant',
-		description: 'ST1131 (Introduction to Statistical Computing)',
+		description: `
+			<ul class="list-disc ml-4">
+				<li>
+					Taught ST1131 (Introduction to Statistical Computing).
+				</li>
+			</ul>
+		`,
 		isInternship: false,
 		from: 'Aug 2022',
 		to: 'May 2023'
@@ -64,16 +106,11 @@ export const works: Work[] = [
 
 export const projects: Project[] = [
 	{
-		title: 'autograd-ui',
-		description: 'Education tool for visualizing automatic differentiation during backpropgation',
-		href: 'https://github.com/hewliyang/autograd-ui',
-		tags: ['Svelte', 'xyflow', 'Typescript']
-	},
-	{
-		title: 'dsa3101-2210-14-lta',
-		description: 'Object detection for traffic observability on Singaporean highways',
-		href: 'https://github.com/hewliyang/dsa3101-2210-14-lta',
-		tags: ['Python', 'Torch', 'MMDet', 'FastAPI', 'NoSQL', 'Plotly']
+		title: 'nus-nextbus-web',
+		description:
+			'NUS Internal Shuttle Bus web client for visualizing arrival times & routes. Over 200k visits.',
+		href: 'https://github.com/hewliyang/nus-nextbus-web',
+		tags: ['Svelte', 'SvelteKit', 'Typescript', 'TailwindCSS', 'GitHub Actions']
 	},
 	{
 		title: 'nus-sentiment',
@@ -83,31 +120,10 @@ export const projects: Project[] = [
 		tags: ['Python', 'Transformers', 'Torch', 'Pinecone', 'Streamlit']
 	},
 	{
-		title: 'nus-nextbus-web',
-		description: 'NUS Internal Shuttle Bus web client for visualizing arrival times & routes.',
-		href: 'https://github.com/hewliyang/nus-nextbus-web',
-		tags: ['Svelte', 'SvelteKit', 'Typescript', 'TailwindCSS', 'GitHub Actions']
-	},
-	{
-		title: 'pru-viz',
+		title: 'autograd-ui',
 		description:
-			'Interactive data visualisations for Malaysian election data. Includes choropleths, log transforms, geomorphing to adjust for population, etc.',
-		href: 'https://github.com/hewliyang/pru-viz',
-		tags: ['Python', 'Streamlit', 'Apache ECharts']
-	},
-	{
-		title: 'hewliyang.com',
-		description: 'This blog!',
-		href: 'https://github.com/hewliyang/hewliyang.com',
-		tags: [
-			'Svelte',
-			'SvelteKit',
-			'Typescript',
-			'TailwindCSS',
-			'shadcn-ui',
-			'KaTeX',
-			'rehype',
-			'remark'
-		]
+			'Education tool for visualizing automatic differentiation during backpropgation. Built in 24H during NUS Hack&Roll 2024.',
+		href: 'https://github.com/hewliyang/autograd-ui',
+		tags: ['Svelte', 'xyflow', 'Typescript']
 	}
 ];
