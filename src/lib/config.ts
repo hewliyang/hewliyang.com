@@ -19,19 +19,19 @@ export const skills = [
 
 export const educations: Education[] = [
 	{
-		degree: 'Data Science & Analytics (CS Minor) Undergrad',
+		degree: 'Data Science & Analytics (CS Minor)',
 		university: 'National University of Singapore',
 		from: 'Aug 2020',
 		to: 'Dec 2024',
 		extra: `Worked on learning to rate synthetic speech quality, published datasets on 🤗
-			<ul class="list-disc ml-4">
+			<ul class="list-disc ml-4 ">
 				<li>
-					<a href="https://huggingface.co/datasets/hewliyang/nisqa-blizzard-challenge-mos" target="_blank" rel="noopener noreferrer" class="underline">
+					<a href="https://huggingface.co/datasets/hewliyang/nisqa-blizzard-challenge-mos" target="_blank" rel="noopener noreferrer" class="underline hover:text-primary">
 						hewliyang/nisqa-blizzard-challenge-mos
 					</a>
 				</li>
 				<li>
-					<a href="https://huggingface.co/datasets/hewliyang/nisqa-vcc-mos" target="_blank" rel="noopener noreferrer" class="underline">
+					<a href="https://huggingface.co/datasets/hewliyang/nisqa-vcc-mos" target="_blank" rel="noopener noreferrer" class="underline hover:text-primary">
 						hewliyang/nisqa-vcc-mos
 					</a>
 				</li>
@@ -45,26 +45,23 @@ export const works: Work[] = [
 		description: `
 			<ul class="list-disc ml-4">
 				<li>
-					Joined as the 1st employee, scaled platform from zero across the full stack to serve over 30 institutional investors across over 10 firms.
+					Joined as 1st employee, scaled platform from zero to production serving 30+ institutional investors across 10+ firms.
 				</li>
 				<li>
-					Involved in all verticals including frontend, backend, product, design and research.
+					Built document ingestion pipelines using ECS autoscaling workers and in-house omniparser.
 				</li>
 				<li>
-					Built and scaled document ingestion pipelines using ECS autoscaling workers and an in-house omniparser for most common file types including Excel sheets.
+					Developed retrieval system using ensemble of lexical search, vector similarity, and cross encoders - competitive on FiQA.
 				</li>
 				<li>
-					Built a retrieval pipeline for unstructured documents using an ensemble of lexical search, vector similarity, cross encoders for reranking and domain specific boosting heuristics which is competitive on FiQA.
+					Built agents with tool execution, code sandboxes, and subagents as tools.
 				</li>
 				<li>
-					Built and designed agents involving tools, code execution sandboxes and subagents as tools.
+					Created web research agent outperforming Perplexity's deep research API on SimpleQA.
 				</li>
 				<li>
-					Built a web research agent that outperformed Perplexity's deep research API on SimpleQA*.
+					Implemented robust SSE streaming endpoints handling client interruptions and hangups.
 				</li>
-				<li>
-					Wrote SSE endpoints for streaming message parts to client, robustly handling client hang up and interruptions.
-				</li>					
 			</ul>
 		`,
 		isInternship: false,
@@ -77,7 +74,7 @@ export const works: Work[] = [
 		description: `
 			<ul class="list-disc ml-4">
 				<li>
-					Policy research for optimizing energy use in data centers, causal inference on sensor data.
+					Policy research for optimizing energy use in data centers, synthetic control methods on time series sensor data.
 				</li>
 			</ul>
 		`,

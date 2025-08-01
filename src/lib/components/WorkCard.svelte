@@ -7,11 +7,7 @@
 <div class="rounded-lg bg-card text-card-foreground">
 	<div class="flex flex-col space-y-1.5">
 		<div class="flex items-center justify-between gap-x-2 text-base">
-			<h3
-				class="inline-flex items-center justify-center gap-x-1 font-semibold leading-none hover:underline"
-			>
-				{work.company}
-			</h3>
+			<h3 class="font-semibold">{work.company}</h3>
 			<div class="text-xs tabular-nums text-gray-500">{work.from} - {work.to}</div>
 		</div>
 	</div>
