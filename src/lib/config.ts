@@ -19,19 +19,19 @@ export const skills = [
 
 export const educations: Education[] = [
 	{
-		degree: 'Data Science & Analytics (CS Minor) Undergrad',
+		degree: 'Data Science & Analytics (CS Minor)',
 		university: 'National University of Singapore',
 		from: 'Aug 2020',
 		to: 'Dec 2024',
 		extra: `Worked on learning to rate synthetic speech quality, published datasets on 🤗
-			<ul class="list-disc ml-4">
+			<ul class="list-disc ml-4 ">
 				<li>
-					<a href="https://huggingface.co/datasets/hewliyang/nisqa-blizzard-challenge-mos" target="_blank" rel="noopener noreferrer" class="underline">
+					<a href="https://huggingface.co/datasets/hewliyang/nisqa-blizzard-challenge-mos" target="_blank" rel="noopener noreferrer" class="underline hover:text-primary">
 						hewliyang/nisqa-blizzard-challenge-mos
 					</a>
 				</li>
 				<li>
-					<a href="https://huggingface.co/datasets/hewliyang/nisqa-vcc-mos" target="_blank" rel="noopener noreferrer" class="underline">
+					<a href="https://huggingface.co/datasets/hewliyang/nisqa-vcc-mos" target="_blank" rel="noopener noreferrer" class="underline hover:text-primary">
 						hewliyang/nisqa-vcc-mos
 					</a>
 				</li>
@@ -45,13 +45,22 @@ export const works: Work[] = [
 		description: `
 			<ul class="list-disc ml-4">
 				<li>
-					Joined as the 1st employee, scaled platform from zero across the full stack to serve over 30 institutional investors across over 10 firms.
+					Joined as 1st employee, scaled platform from zero to production serving 30+ institutional investors across 10+ firms.
 				</li>
 				<li>
-					Involved in all verticals including frontend, backend, product, design and research.
+					Built document ingestion pipelines using ECS autoscaling workers and in-house omniparser.
 				</li>
 				<li>
-					Primary focus in unstructured document search and agent scaffolding to suit domain requirements.
+					Developed retrieval system using ensemble of lexical search, vector similarity, and cross encoders - competitive on FiQA.
+				</li>
+				<li>
+					Built agents with tool execution, code sandboxes, and subagents as tools.
+				</li>
+				<li>
+					Created web research agent outperforming Perplexity's deep research API on SimpleQA.
+				</li>
+				<li>
+					Implemented robust SSE streaming endpoints handling client interruptions and hangups.
 				</li>
 			</ul>
 		`,
@@ -61,11 +70,11 @@ export const works: Work[] = [
 		to: 'Now'
 	},
 	{
-		company: 'NCS, IORA (NUS)',
+		company: 'NCS',
 		description: `
 			<ul class="list-disc ml-4">
 				<li>
-					Policy research for optimizing energy use in data centers, causal inference on sensor data.
+					Policy research for optimizing energy use in data centers, synthetic control methods on time series sensor data.
 				</li>
 			</ul>
 		`,
@@ -79,7 +88,7 @@ export const works: Work[] = [
 		description: `
 			<ul class="list-disc ml-4">
 				<li>
-					Building internal LLM SDKs, structured output pipelines and a natural language to kdb+q queries for our traders.
+					Building internal LLM SDKs, structured output pipelines and a natural language to kdb+q query service for our traders.
 				</li>
 			</ul>
 		`,
@@ -89,7 +98,7 @@ export const works: Work[] = [
 		to: 'Dec 2023'
 	},
 	{
-		company: 'National University of Singapore (NUS)',
+		company: 'National University of Singapore',
 		position: 'Teaching Assistant',
 		description: `
 			<ul class="list-disc ml-4">

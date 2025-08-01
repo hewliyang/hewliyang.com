@@ -11,7 +11,7 @@
 			<div class="text-xs tabular-nums text-gray-500">{education.from} - {education.to}</div>
 		</div>
 	</div>
-	<div class="mt-2 text-pretty font-mono text-sm text-muted-foreground">
+	<div class="mt-2 text-pretty text-sm text-muted-foreground">
 		{education.degree}
 	</div>
 	{#if education.extra}
