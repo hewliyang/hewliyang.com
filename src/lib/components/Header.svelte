@@ -6,7 +6,7 @@
 </script>
 
 <header class="container">
-	<div class="flex items-center justify-between py-4">
+	<div class="flex flex-col space-y-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:space-y-0">
 		<div class="flex items-center space-x-2">
 			<div class="flex flex-col space-y-1 text-sm leading-none">
 				<a href="/" class="text-lg font-bold">{config.title}</a>
