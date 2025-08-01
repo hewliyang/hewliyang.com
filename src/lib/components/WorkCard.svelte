@@ -12,11 +12,13 @@
 			>
 				{work.company}
 			</h3>
-			<div class="text-sm tabular-nums text-gray-500">{work.from} - {work.to}</div>
+			<div class="text-xs tabular-nums text-gray-500">{work.from} - {work.to}</div>
 		</div>
-		<h4 class="font-mono text-sm leading-none">{work.position}</h4>
 	</div>
-	<div class="mt-2 text-pretty font-mono text-xs text-muted-foreground">
-		{work.description}
+	<div class="mt-2 text-pretty font-mono text-sm text-muted-foreground">
+		{work.position}
+	</div>
+	<div class="mt-2 text-pretty text-sm text-muted-foreground">
+		{@html work.description}
 	</div>
 </div>
