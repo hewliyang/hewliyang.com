@@ -15,7 +15,7 @@
 			<div class="text-xs tabular-nums text-gray-500">{work.from} - {work.to}</div>
 		</div>
 	</div>
-	<div class="mt-2 text-pretty font-mono text-sm text-muted-foreground">
+	<div class="mt-2 text-pretty text-sm text-muted-foreground">
 		{work.position}
 	</div>
 	<div class="mt-2 text-pretty text-sm text-muted-foreground">

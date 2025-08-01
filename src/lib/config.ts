@@ -51,8 +51,20 @@ export const works: Work[] = [
 					Involved in all verticals including frontend, backend, product, design and research.
 				</li>
 				<li>
-					Primary focus in unstructured document search and agent scaffolding to suit domain requirements.
+					Built and scaled document ingestion pipelines using ECS autoscaling workers and an in-house omniparser for most common file types including Excel sheets.
 				</li>
+				<li>
+					Built a retrieval pipeline for unstructured documents using an ensemble of lexical search, vector similarity, cross encoders for reranking and domain specific boosting heuristics which is competitive on FiQA.
+				</li>
+				<li>
+					Built and designed agents involving tools, code execution sandboxes and subagents as tools.
+				</li>
+				<li>
+					Built a web research agent that outperformed Perplexity's deep research API on SimpleQA*.
+				</li>
+				<li>
+					Wrote SSE endpoints for streaming message parts to client, robustly handling client hang up and interruptions.
+				</li>					
 			</ul>
 		`,
 		isInternship: false,
@@ -61,7 +73,7 @@ export const works: Work[] = [
 		to: 'Now'
 	},
 	{
-		company: 'NCS, IORA (NUS)',
+		company: 'NCS',
 		description: `
 			<ul class="list-disc ml-4">
 				<li>
@@ -79,7 +91,7 @@ export const works: Work[] = [
 		description: `
 			<ul class="list-disc ml-4">
 				<li>
-					Building internal LLM SDKs, structured output pipelines and a natural language to kdb+q queries for our traders.
+					Building internal LLM SDKs, structured output pipelines and a natural language to kdb+q query service for our traders.
 				</li>
 			</ul>
 		`,
@@ -89,7 +101,7 @@ export const works: Work[] = [
 		to: 'Dec 2023'
 	},
 	{
-		company: 'National University of Singapore (NUS)',
+		company: 'National University of Singapore',
 		position: 'Teaching Assistant',
 		description: `
 			<ul class="list-disc ml-4">
