@@ -51,7 +51,7 @@ export const works: Work[] = [
 					Built document ingestion pipelines using ECS autoscaling workers and in-house omniparser.
 				</li>
 				<li>
-					Developed retrieval system using ensemble of lexical search, vector similarity, and cross encoders - competitive on FiQA.
+					Developed retrieval system using ensemble of lexical search, vector similarity, and cross encoders - competitive against FinanceBench baselines.
 				</li>
 				<li>
 					Built agents with tool execution, code sandboxes, and subagents as tools.
