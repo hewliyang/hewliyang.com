@@ -22,7 +22,18 @@ export interface GitHubData {
 
 const USERNAME = 'hewliyang';
 
-async function searchGitHubItems(query: string, token?: string): Promise<any[]> {
+interface GitHubSearchItem {
+	title: string;
+	html_url: string;
+	state: 'open' | 'closed';
+	created_at: string;
+	repository_url: string;
+	pull_request?: {
+		merged_at: string | null;
+	};
+}
+
+async function searchGitHubItems(query: string, token?: string): Promise<GitHubSearchItem[]> {
 	const headers: Record<string, string> = {
 		Accept: 'application/vnd.github.v3+json',
 		'User-Agent': 'hewliyang-portfolio'
@@ -50,13 +61,10 @@ export async function fetchGitHubData(token?: string): Promise<GitHubData> {
 	try {
 		const [prItems, issueItems] = await Promise.all([
 			searchGitHubItems(`type:pr author:${USERNAME} -user:${USERNAME} -org:selangor-no-1`, token),
-			searchGitHubItems(
-				`type:issue author:${USERNAME} -user:${USERNAME} -org:selangor-no-1`,
-				token
-			)
+			searchGitHubItems(`type:issue author:${USERNAME} -user:${USERNAME} -org:selangor-no-1`, token)
 		]);
 
-		const prs: GitHubPR[] = prItems.map((pr: any) => ({
+		const prs: GitHubPR[] = prItems.map((pr) => ({
 			title: pr.title,
 			html_url: pr.html_url,
 			state: pr.state,
@@ -65,7 +73,7 @@ export async function fetchGitHubData(token?: string): Promise<GitHubData> {
 			repository: pr.repository_url.replace('https://api.github.com/repos/', '')
 		}));
 
-		const issues: GitHubIssue[] = issueItems.map((issue: any) => ({
+		const issues: GitHubIssue[] = issueItems.map((issue) => ({
 			title: issue.title,
 			html_url: issue.html_url,
 			state: issue.state,

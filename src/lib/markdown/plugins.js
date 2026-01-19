@@ -1,4 +1,5 @@
-// @ts-nocheck
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck - Rehype/unist types are complex and don't play well with strict TS
 import { visit } from 'unist-util-visit';
 
 /**
@@ -63,7 +64,22 @@ export function rehypeCustomComponents(options) {
 	const elementNames = Object.keys(components);
 
 	// Elements that are self-closing in HTML (void elements)
-	const voidElements = ['img', 'br', 'hr', 'input', 'meta', 'link', 'area', 'base', 'col', 'embed', 'param', 'source', 'track', 'wbr'];
+	const voidElements = [
+		'img',
+		'br',
+		'hr',
+		'input',
+		'meta',
+		'link',
+		'area',
+		'base',
+		'col',
+		'embed',
+		'param',
+		'source',
+		'track',
+		'wbr'
+	];
 
 	return (tree) => {
 		if (elementNames.length === 0) return;

@@ -201,7 +201,8 @@
 			});
 
 			// Animate in a loop: draw KL→SG, pause, fade out, repeat
-			gsap.timeline({ repeat: -1, repeatDelay: 0.8 })
+			gsap
+				.timeline({ repeat: -1, repeatDelay: 0.8 })
 				.to(connectionPathEl, {
 					strokeDashoffset: 0,
 					duration: 1.5,
@@ -248,7 +249,11 @@
 		<!-- Kuala Lumpur marker -->
 		<g transform="translate({klPoint[0]}, {klPoint[1]})">
 			<circle r="4" class="fill-neutral-900 dark:fill-neutral-100" />
-			<circle r="6" class="fill-none stroke-neutral-900/30 dark:stroke-neutral-100/30" stroke-width="1.5" />
+			<circle
+				r="6"
+				class="fill-none stroke-neutral-900/30 dark:stroke-neutral-100/30"
+				stroke-width="1.5"
+			/>
 		</g>
 
 		<!-- Singapore marker -->
@@ -256,7 +261,7 @@
 			<circle r="4" class="fill-amber-500" />
 			<circle r="6" class="fill-none stroke-amber-500/40" stroke-width="1.5" />
 			<!-- Ping animation for current location -->
-			<circle r="4" class="fill-amber-500 animate-ping opacity-75" />
+			<circle r="4" class="animate-ping fill-amber-500 opacity-75" />
 		</g>
 
 		<!-- Labels -->

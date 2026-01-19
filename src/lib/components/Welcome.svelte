@@ -43,7 +43,7 @@
 
 <h1
 	bind:this={headingEl}
-	class="text-3xl font-bold text-neutral-900 dark:text-neutral-100 font-mono tracking-wider"
+	class="font-mono text-3xl font-bold tracking-wider text-neutral-900 dark:text-neutral-100"
 >
 	░▓█∆λ∂π
 </h1>

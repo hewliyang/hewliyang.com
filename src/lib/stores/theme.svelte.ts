@@ -15,10 +15,6 @@ class ThemeStore {
 		this.#apply();
 	};
 
-	#getSystemTheme(): 'light' | 'dark' {
-		return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-	}
-
 	#apply() {
 		document.documentElement.classList.toggle('dark', this.current === 'dark');
 	}

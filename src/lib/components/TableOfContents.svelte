@@ -120,7 +120,7 @@
 					On this page
 				</p>
 				<ul class="space-y-1 border-l border-neutral-200 dark:border-neutral-800">
-					{#each headings as heading}
+					{#each headings as heading (heading.id)}
 						<li>
 							<button
 								onclick={() => scrollToHeading(heading.id)}

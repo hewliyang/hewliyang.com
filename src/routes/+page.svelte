@@ -130,7 +130,7 @@
 	<section class="space-y-3">
 		<h3 class="text-sm font-medium text-neutral-900 dark:text-neutral-100">Get in touch</h3>
 		<div class="flex flex-wrap items-center gap-4">
-			{#each contactLinks as link}
+			{#each contactLinks as link (link.href)}
 				{@render contactLink(link)}
 			{/each}
 		</div>

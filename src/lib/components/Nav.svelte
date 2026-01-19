@@ -59,7 +59,7 @@
 					Navigation
 				</p>
 				<ul class="space-y-1 border-l border-neutral-200 dark:border-neutral-800">
-					{#each links as link}
+					{#each links as link (link.href)}
 						{@render desktopLink(link.href, link.label)}
 					{/each}
 				</ul>
@@ -73,7 +73,7 @@
 	class="fixed inset-x-0 bottom-0 z-50 border-t border-neutral-200 bg-white/80 backdrop-blur-sm lg:hidden dark:border-neutral-800 dark:bg-neutral-950/80"
 >
 	<ul class="flex items-center justify-center gap-8 px-4 py-3">
-		{#each links as link}
+		{#each links as link (link.href)}
 			{@render mobileLink(link.href, link.label, link.icon)}
 		{/each}
 		<li>

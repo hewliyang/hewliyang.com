@@ -10,14 +10,7 @@
 </script>
 
 <figure class="my-6 {className}">
-	<img
-		{src}
-		{alt}
-		{title}
-		loading="lazy"
-		decoding="async"
-		class="block w-full rounded"
-	/>
+	<img {src} {alt} {title} loading="lazy" decoding="async" class="block w-full rounded" />
 	{#if alt || title}
 		<figcaption class="text-center text-sm text-neutral-500 dark:text-neutral-400">
 			{title || alt}

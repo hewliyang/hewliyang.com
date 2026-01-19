@@ -88,8 +88,10 @@
 			<div class="space-y-2">
 				{@render section('Pull Requests')}
 				<!-- Desktop: 3-column grid -->
-				<div class="hidden md:grid md:grid-cols-[5.5rem_1fr_14rem] md:items-center md:gap-x-3 md:gap-y-1 text-sm">
-					{#each prs as pr}
+				<div
+					class="hidden text-sm md:grid md:grid-cols-[5.5rem_1fr_14rem] md:items-center md:gap-x-3 md:gap-y-1"
+				>
+					{#each prs as pr (pr.html_url)}
 						{@render badge(
 							pr.merged_at ? 'merged' : pr.state === 'open' ? 'open' : 'closed',
 							pr.merged_at ? 'merged' : pr.state
@@ -100,7 +102,7 @@
 				</div>
 				<!-- Mobile: stacked layout -->
 				<div class="flex flex-col gap-3 text-sm md:hidden">
-					{#each prs as pr}
+					{#each prs as pr (pr.html_url)}
 						<div class="flex flex-col gap-1">
 							<a
 								href={pr.html_url}
@@ -127,8 +129,10 @@
 			<div class="space-y-2">
 				{@render section('Issues')}
 				<!-- Desktop: 3-column grid -->
-				<div class="hidden md:grid md:grid-cols-[5.5rem_1fr_14rem] md:items-center md:gap-x-3 md:gap-y-1 text-sm">
-					{#each issues as issue}
+				<div
+					class="hidden text-sm md:grid md:grid-cols-[5.5rem_1fr_14rem] md:items-center md:gap-x-3 md:gap-y-1"
+				>
+					{#each issues as issue (issue.html_url)}
 						{@render issueBadge(issue.state)}
 						{@render itemLink(issue.html_url, issue.title)}
 						{@render repo(issue.repository)}
@@ -136,7 +140,7 @@
 				</div>
 				<!-- Mobile: stacked layout -->
 				<div class="flex flex-col gap-3 text-sm md:hidden">
-					{#each issues as issue}
+					{#each issues as issue (issue.html_url)}
 						<div class="flex flex-col gap-1">
 							<a
 								href={issue.html_url}
