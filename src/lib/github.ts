@@ -24,7 +24,8 @@ const USERNAME = 'hewliyang';
 
 async function searchGitHubItems(query: string, token?: string): Promise<any[]> {
 	const headers: Record<string, string> = {
-		Accept: 'application/vnd.github.v3+json'
+		Accept: 'application/vnd.github.v3+json',
+		'User-Agent': 'hewliyang-portfolio'
 	};
 
 	if (token) {
