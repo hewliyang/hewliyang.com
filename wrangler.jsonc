@@ -1,0 +1,12 @@
+{
+	"name": "hewliyang",
+	"compatibility_date": "2025-01-01",
+	"compatibility_flags": ["nodejs_compat"],
+	"pages_build_output_dir": ".svelte-kit/cloudflare",
+	"kv_namespaces": [
+		{
+			"binding": "GITHUB_CACHE",
+			"id": "c56f4047b0ec427d852337a6187697b8"
+		}
+	]
+}
