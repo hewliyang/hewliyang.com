@@ -22,21 +22,9 @@ export interface GitHubData {
 
 const USERNAME = 'hewliyang';
 
-interface GitHubSearchItem {
-	title: string;
-	html_url: string;
-	state: 'open' | 'closed';
-	created_at: string;
-	repository_url: string;
-	pull_request?: {
-		merged_at: string | null;
-	};
-}
-
-async function searchGitHubItems(query: string, token?: string): Promise<GitHubSearchItem[]> {
+async function searchGitHubItems(query: string, token?: string): Promise<any[]> {
 	const headers: Record<string, string> = {
-		Accept: 'application/vnd.github.v3+json',
-		'User-Agent': 'hewliyang-portfolio'
+		Accept: 'application/vnd.github.v3+json'
 	};
 
 	if (token) {
@@ -64,7 +52,7 @@ export async function fetchGitHubData(token?: string): Promise<GitHubData> {
 			searchGitHubItems(`type:issue author:${USERNAME} -user:${USERNAME} -org:selangor-no-1`, token)
 		]);
 
-		const prs: GitHubPR[] = prItems.map((pr) => ({
+		const prs: GitHubPR[] = prItems.map((pr: any) => ({
 			title: pr.title,
 			html_url: pr.html_url,
 			state: pr.state,
@@ -73,7 +61,7 @@ export async function fetchGitHubData(token?: string): Promise<GitHubData> {
 			repository: pr.repository_url.replace('https://api.github.com/repos/', '')
 		}));
 
-		const issues: GitHubIssue[] = issueItems.map((issue) => ({
+		const issues: GitHubIssue[] = issueItems.map((issue: any) => ({
 			title: issue.title,
 			html_url: issue.html_url,
 			state: issue.state,

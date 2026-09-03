@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-// @ts-nocheck - Rehype/unist types are complex and don't play well with strict TS
+// @ts-nocheck
 import { visit } from 'unist-util-visit';
 
 /**

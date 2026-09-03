@@ -16,7 +16,7 @@
 	</header>
 
 	<div class="space-y-6">
-		{#each data.posts as post (post.slug)}
+		{#each data.posts as post}
 			<article>
 				<a href="/notes/{post.slug}" class="group block space-y-2">
 					<h2

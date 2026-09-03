@@ -1,290 +1,371 @@
 <script lang="ts">
 	import { geoMercator, geoPath } from 'd3-geo';
 	import type { Feature, MultiPolygon, Polygon } from 'geojson';
-	import { onMount } from 'svelte';
-	import gsap from 'gsap';
 
-	let connectionPathEl: SVGPathElement;
+	import peninsularMalaysia from '$lib/data/peninsular_malaysia.json';
+	import singaporeGeo from '$lib/data/singapore.json';
+	import californiaGeo from '$lib/data/california.json';
 
-	// Peninsular Malaysia GeoJSON (simplified)
-	const peninsularMalaysia: Feature<MultiPolygon> = {
-		type: 'Feature',
-		properties: { name: 'Peninsular Malaysia' },
-		geometry: {
-			type: 'MultiPolygon',
-			coordinates: [
-				[
-					[
-						[100.119141, 6.441992],
-						[100.137988, 6.488672],
-						[100.16123, 6.641602],
-						[100.176758, 6.671826],
-						[100.216602, 6.686621],
-						[100.261426, 6.682715],
-						[100.34541, 6.549902],
-						[100.563867, 6.467529],
-						[100.629492, 6.447998],
-						[100.715625, 6.480664],
-						[100.754492, 6.460059],
-						[100.79375, 6.426172],
-						[100.816504, 6.331641],
-						[100.873926, 6.24541],
-						[100.98877, 6.257666],
-						[101.029395, 6.245312],
-						[101.053516, 6.242578],
-						[101.075977, 6.166064],
-						[101.086523, 6.033691],
-						[101.075586, 5.956494],
-						[100.992773, 5.846191],
-						[100.981641, 5.771045],
-						[101.025195, 5.724512],
-						[101.081738, 5.674902],
-						[101.113965, 5.636768],
-						[101.147656, 5.643066],
-						[101.190625, 5.66875],
-						[101.229785, 5.733691],
-						[101.257031, 5.789355],
-						[101.404199, 5.85166],
-						[101.556055, 5.907764],
-						[101.576758, 5.902002],
-						[101.601367, 5.877148],
-						[101.65, 5.795996],
-						[101.678418, 5.778809],
-						[101.719531, 5.770605],
-						[101.790723, 5.779346],
-						[101.873633, 5.825293],
-						[101.917188, 5.911377],
-						[101.936133, 5.979346],
-						[102.055176, 6.09668],
-						[102.068359, 6.184668],
-						[102.101074, 6.242236],
-						[102.274023, 6.203418],
-						[102.340137, 6.172021],
-						[102.534375, 5.862549],
-						[102.790234, 5.644922],
-						[102.898535, 5.56377],
-						[102.982422, 5.524951],
-						[103.09707, 5.408447],
-						[103.196973, 5.262158],
-						[103.41582, 4.850293],
-						[103.453906, 4.669482],
-						[103.46875, 4.393262],
-						[103.420508, 3.976855],
-						[103.362012, 3.769141],
-						[103.37334, 3.671094],
-						[103.453516, 3.520605],
-						[103.429492, 3.378564],
-						[103.44502, 3.260596],
-						[103.439453, 2.933105],
-						[103.485156, 2.836572],
-						[103.537305, 2.774756],
-						[103.812207, 2.580469],
-						[103.832324, 2.508496],
-						[103.967773, 2.26123],
-						[104.218555, 1.722852],
-						[104.288477, 1.480664],
-						[104.280371, 1.415576],
-						[104.250098, 1.388574],
-						[104.176367, 1.364893],
-						[104.114941, 1.412256],
-						[104.094238, 1.446191],
-						[104.100586, 1.48833],
-						[104.076172, 1.529785],
-						[104.016016, 1.579297],
-						[103.981445, 1.623633],
-						[103.991211, 1.550049],
-						[103.991504, 1.454785],
-						[103.915137, 1.44668],
-						[103.816797, 1.476562],
-						[103.694531, 1.449658],
-						[103.549805, 1.332812],
-						[103.480273, 1.329492],
-						[103.427344, 1.429834],
-						[103.4, 1.497852],
-						[103.356836, 1.546143],
-						[102.896875, 1.792334],
-						[102.727148, 1.855566],
-						[102.548242, 2.042383],
-						[102.145605, 2.248486],
-						[101.889941, 2.449414],
-						[101.78125, 2.573584],
-						[101.519727, 2.683643],
-						[101.406836, 2.813477],
-						[101.351367, 2.838965],
-						[101.295508, 2.885205],
-						[101.354297, 3.011133],
-						[101.330176, 3.14248],
-						[101.299902, 3.253271],
-						[101.11543, 3.472021],
-						[101.024805, 3.624707],
-						[100.85127, 3.776709],
-						[100.781836, 3.864453],
-						[100.71543, 3.966211],
-						[100.757031, 4.001807],
-						[100.795508, 4.023389],
-						[100.760254, 4.097217],
-						[100.661035, 4.225732],
-						[100.614551, 4.373437],
-						[100.614551, 4.652246],
-						[100.473437, 5.044287],
-						[100.352637, 5.587695],
-						[100.374023, 5.777979],
-						[100.343262, 5.98418],
-						[100.263281, 6.18252],
-						[100.158398, 6.324219],
-						[100.119141, 6.441992]
-					]
-				]
-			]
+	const malaysia = peninsularMalaysia as unknown as Feature<MultiPolygon>;
+	const singapore = singaporeGeo as unknown as Feature<Polygon>;
+	const california = californiaGeo as unknown as Feature<Polygon>;
+
+	// City coordinates [lon, lat]
+	const kualaLumpur: [number, number] = [101.6869, 3.139];
+	const singaporeCity: [number, number] = [103.8198, 1.3521];
+	const sanFrancisco: [number, number] = [-122.4194, 37.7749];
+
+	const width = 240;
+	const height = 170;
+
+	const seaProj = geoMercator().center([102.3, 3.6]).scale(850).translate([50, 115]);
+	const caProj = geoMercator().center([-119.5, 37.0]).scale(360).translate([195, 55]);
+
+	const seaPath = geoPath().projection(seaProj);
+	const caPath = geoPath().projection(caProj);
+
+	const malaysiaPath = seaPath(malaysia) || '';
+	const singaporePath = seaPath(singapore) || '';
+	const californiaPath = caPath(california) || '';
+
+	const landClass =
+		'fill-neutral-200 stroke-neutral-300 dark:fill-neutral-800 dark:stroke-neutral-700';
+
+	function projectSEA(point: [number, number]): [number, number] {
+		const p = seaProj(point);
+		return p ? [p[0], p[1]] : [0, 0];
+	}
+	function projectCA(point: [number, number]): [number, number] {
+		const p = caProj(point);
+		return p ? [p[0], p[1]] : [0, 0];
+	}
+
+	const klPt = projectSEA(kualaLumpur);
+	const sgPt = projectSEA(singaporeCity);
+	const sfPt = projectCA(sanFrancisco);
+
+	const klSgMidX = (klPt[0] + sgPt[0]) / 2 - 6;
+	const klSgMidY = (klPt[1] + sgPt[1]) / 2 + 2;
+	const klSgPath = `M ${klPt[0]} ${klPt[1]} Q ${klSgMidX} ${klSgMidY} ${sgPt[0]} ${sgPt[1]}`;
+
+	const sgSfMidX = (sgPt[0] + sfPt[0]) / 2;
+	const sgSfMidY = Math.min(sgPt[1], sfPt[1]) - 28;
+	const sgSfPathD = `M ${sgPt[0]} ${sgPt[1]} Q ${sgSfMidX} ${sgSfMidY} ${sfPt[0]} ${sfPt[1]}`;
+
+	const labelClass = 'font-mono text-[9px]';
+
+	// Ocean canvas bleeds past the SVG bounds into surrounding whitespace.
+	// Left/top/bottom bleed generously; right stays modest to avoid horizontal
+	// scroll (overflow to the right of the viewport creates a scrollbar,
+	// overflow to the left/top doesn't).
+	const bleed = { top: 150, right: 72, bottom: 200, left: 340 };
+	const oceanW = width + bleed.left + bleed.right;
+	const oceanH = height + bleed.top + bleed.bottom;
+
+	function animateArc(node: SVGPathElement) {
+		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+		const length = node.getTotalLength();
+		node.style.strokeDasharray = `${length}`;
+
+		// draw (2s) -> hold (0.9s) -> fade (0.6s) -> pause (1.2s), looped
+		const total = 4700;
+		const draw = node.animate(
+			[
+				{ strokeDashoffset: length, offset: 0, easing: 'cubic-bezier(0.45, 0, 0.55, 1)' },
+				{ strokeDashoffset: 0, offset: 2000 / total },
+				{ strokeDashoffset: 0, offset: 1 }
+			],
+			{ duration: total, iterations: Infinity }
+		);
+		const fade = node.animate(
+			[
+				{ opacity: 1, offset: 0 },
+				{ opacity: 1, offset: 2900 / total },
+				{ opacity: 0, offset: 3500 / total },
+				{ opacity: 0, offset: 1 }
+			],
+			{ duration: total, iterations: Infinity }
+		);
+
+		return () => {
+			draw.cancel();
+			fade.cancel();
+		};
+	}
+
+	// WebGL ocean: slow-drifting fbm contour lines, nautical-chart style.
+	// Tinted neutrals at watermark alpha; vignetted so the canvas edge never shows.
+	const VERT = `#version 300 es
+void main() {
+	vec2 p = vec2((gl_VertexID << 1) & 2, gl_VertexID & 2);
+	gl_Position = vec4(p * 2.0 - 1.0, 0.0, 1.0);
+}`;
+
+	const FRAG = `#version 300 es
+precision highp float;
+uniform vec2 u_res;
+uniform float u_t;
+uniform vec3 u_color;
+uniform float u_alpha;
+uniform float u_boost;
+uniform float u_zoom;
+uniform vec2 u_center;
+uniform vec4 u_edge; // normalized fade widths: left, right, bottom, top
+out vec4 o;
+
+float hash(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123); }
+float noise(vec2 p) {
+	vec2 i = floor(p), f = fract(p);
+	vec2 u = f * f * (3.0 - 2.0 * f);
+	return mix(
+		mix(hash(i), hash(i + vec2(1, 0)), u.x),
+		mix(hash(i + vec2(0, 1)), hash(i + vec2(1, 1)), u.x),
+		u.y
+	);
+}
+float fbm(vec2 p) {
+	float v = 0.0, a = 0.5;
+	for (int i = 0; i < 3; i++) {
+		v += a * noise(p);
+		p *= 2.03;
+		a *= 0.5;
+	}
+	return v;
+}
+
+// One field of open, undulating swell lines.
+// freq: line density; warp: undulation depth; drift: phase scroll speed.
+float swell(vec2 uv, float t, float freq, float warp, float drift) {
+	float s = uv.y * freq + fbm(uv * 1.5 + vec2(t * 0.45, 0.0)) * warp - t * drift;
+	return 1.0 - smoothstep(0.0, 1.6, abs(fract(s) - 0.5) / fwidth(s));
+}
+
+void main() {
+	// u_zoom keeps wavelength constant in CSS px regardless of canvas size
+	vec2 uv = gl_FragCoord.xy / u_res.y * u_zoom;
+	float t = u_t * 0.06;
+
+	// Three swell layers at different scales and speeds: parallax = depth.
+	// Far: fine, faint, slow. Mid: main field. Near: long lazy rollers.
+	float far  = swell(uv, t * 0.6, 19.0, 1.8, 0.7) * 0.30;
+	float mid  = swell(uv + 3.7, t, 11.0, 2.8, 1.0) * 0.65;
+	float near = swell(uv + 9.2, t * 1.5, 6.0, 3.6, 1.3) * 1.0;
+
+	// Patchy shimmer: large slow noise brightens some regions, dims others,
+	// like light moving on water. Keeps the field from feeling mechanical.
+	float glint = 0.45 + 0.55 * noise(uv * 1.1 + vec2(t * 0.8, t * 0.3));
+
+	float line = (far + mid + near) * glint;
+	vec2 c = gl_FragCoord.xy / u_res - u_center;
+	float vig = smoothstep(0.6, 0.2, length(c * vec2(1.0, 1.05)));
+	// Hard guarantee: alpha reaches zero at every canvas edge so the square
+	// boundary never shows, regardless of how asymmetric the bleed is.
+	vec2 q = gl_FragCoord.xy / u_res;
+	float edge = smoothstep(0.0, u_edge.x, q.x)
+	           * smoothstep(0.0, u_edge.y, 1.0 - q.x)
+	           * smoothstep(0.0, u_edge.z, q.y)
+	           * smoothstep(0.0, u_edge.w, 1.0 - q.y);
+	float a = min(line * u_boost, 1.0) * vig * edge * u_alpha;
+	o = vec4(u_color * a, a);
+}`;
+
+	function oceanShader(canvas: HTMLCanvasElement) {
+		const gl = canvas.getContext('webgl2', { alpha: true, premultipliedAlpha: true });
+		if (!gl) return; // no WebGL2: page background shows through, nothing lost
+
+		const dpr = Math.min(window.devicePixelRatio || 1, 2);
+		canvas.width = oceanW * dpr;
+		canvas.height = oceanH * dpr;
+
+		function compile(type: number, src: string) {
+			const s = gl!.createShader(type)!;
+			gl!.shaderSource(s, src);
+			gl!.compileShader(s);
+			return s;
 		}
-	};
+		const prog = gl.createProgram()!;
+		gl.attachShader(prog, compile(gl.VERTEX_SHADER, VERT));
+		gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, FRAG));
+		gl.linkProgram(prog);
+		if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return;
+		gl.useProgram(prog);
 
-	// Singapore GeoJSON
-	const singapore: Feature<Polygon> = {
-		type: 'Feature',
-		properties: { name: 'Singapore' },
-		geometry: {
-			type: 'Polygon',
-			coordinates: [
-				[
-					[103.969727, 1.331445],
-					[103.819922, 1.265381],
-					[103.650195, 1.325537],
-					[103.705273, 1.423437],
-					[103.817969, 1.44707],
-					[103.908984, 1.415967],
-					[103.96084, 1.392236],
-					[103.996387, 1.365234],
-					[103.969727, 1.331445]
-				]
-			]
+		const uRes = gl.getUniformLocation(prog, 'u_res');
+		const uT = gl.getUniformLocation(prog, 'u_t');
+		const uColor = gl.getUniformLocation(prog, 'u_color');
+		const uAlpha = gl.getUniformLocation(prog, 'u_alpha');
+		const uBoost = gl.getUniformLocation(prog, 'u_boost');
+		const uZoom = gl.getUniformLocation(prog, 'u_zoom');
+		const uCenter = gl.getUniformLocation(prog, 'u_center');
+		const uEdge = gl.getUniformLocation(prog, 'u_edge');
+
+		gl.viewport(0, 0, canvas.width, canvas.height);
+		gl.uniform2f(uRes, canvas.width, canvas.height);
+		gl.uniform1f(uZoom, oceanH / height);
+		// Anchor the vignette focal point over the map box, not the canvas center,
+		// so the asymmetric bleed doesn't make the ocean glow lopsided.
+		// gl_FragCoord origin is bottom-left, so y is measured from the bottom.
+		gl.uniform2f(uCenter, (bleed.left + width / 2) / oceanW, (bleed.bottom + height / 2) / oceanH);
+		// Fade widths sized to each side's bleed (capped so big bleeds don't
+		// over-soften), in normalized canvas units. gl y=0 is the CSS bottom.
+		gl.uniform4f(
+			uEdge,
+			Math.min(bleed.left, 140) / oceanW,
+			Math.min(bleed.right, 140) / oceanW,
+			Math.min(bleed.bottom, 140) / oceanH,
+			Math.min(bleed.top, 140) / oceanH
+		);
+		gl.enable(gl.BLEND);
+		gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+
+		const dark = window.matchMedia('(prefers-color-scheme: dark)');
+		function applyTheme() {
+			if (dark.matches) {
+				gl!.uniform3f(uColor, 0.56, 0.65, 0.82);
+				gl!.uniform1f(uAlpha, 0.2);
+				gl!.uniform1f(uBoost, 1.0);
+			} else {
+				// Deep ink blue; aggressive boost saturates even the faint far
+				// layer so every line registers against a white page.
+				gl!.uniform3f(uColor, 0.16, 0.28, 0.52);
+				gl!.uniform1f(uAlpha, 1.0);
+				gl!.uniform1f(uBoost, 3.5);
+			}
 		}
-	};
+		applyTheme();
 
-	// City coordinates
-	const kualaLumpur = { lon: 101.6869, lat: 3.139 };
-	const singaporeCity = { lon: 103.8198, lat: 1.3521 };
+		function draw(t: number) {
+			gl!.uniform1f(uT, t);
+			gl!.clearColor(0, 0, 0, 0);
+			gl!.clear(gl!.COLOR_BUFFER_BIT);
+			gl!.drawArrays(gl!.TRIANGLES, 0, 3);
+		}
 
-	// SVG dimensions
-	const width = 280;
-	const height = 200;
-
-	// Create projection centered on the region - zoomed in tighter
-	const projection = geoMercator()
-		.center([102.2, 3.6])
-		.scale(2200)
-		.translate([width / 2, height / 2]);
-
-	const pathGenerator = geoPath().projection(projection);
-
-	// Generate paths
-	const malaysiaPath = pathGenerator(peninsularMalaysia) || '';
-	const singaporePath = pathGenerator(singapore) || '';
-
-	// Project city coordinates
-	const klPoint = projection([kualaLumpur.lon, kualaLumpur.lat]) || [0, 0];
-	const sgPoint = projection([singaporeCity.lon, singaporeCity.lat]) || [0, 0];
-
-	// Create curved path between cities
-	const midX = (klPoint[0] + sgPoint[0]) / 2;
-	const midY = (klPoint[1] + sgPoint[1]) / 2 - 20;
-	const connectionPath = `M ${klPoint[0]} ${klPoint[1]} Q ${midX} ${midY} ${sgPoint[0]} ${sgPoint[1]}`;
-
-	onMount(() => {
-		if (connectionPathEl) {
-			const pathLength = connectionPathEl.getTotalLength();
-
-			// Set initial state
-			gsap.set(connectionPathEl, {
-				strokeDasharray: pathLength,
-				strokeDashoffset: pathLength
+		const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		if (reduced) {
+			draw(40); // single static frame
+			const onTheme = () => draw(40);
+			dark.addEventListener('change', () => {
+				applyTheme();
+				onTheme();
 			});
-
-			// Animate in a loop: draw KL→SG, pause, fade out, repeat
-			gsap
-				.timeline({ repeat: -1, repeatDelay: 0.8 })
-				.to(connectionPathEl, {
-					strokeDashoffset: 0,
-					duration: 1.5,
-					ease: 'power2.inOut'
-				})
-				.to(connectionPathEl, {
-					opacity: 0,
-					duration: 0.5,
-					delay: 0.5
-				})
-				.set(connectionPathEl, {
-					strokeDashoffset: pathLength,
-					opacity: 1
-				});
+			return;
 		}
-	});
+
+		let raf = 0;
+		let visible = true;
+		function loop() {
+			draw(performance.now() / 1000);
+			raf = requestAnimationFrame(loop);
+		}
+		function setRunning(run: boolean) {
+			cancelAnimationFrame(raf);
+			if (run) raf = requestAnimationFrame(loop);
+		}
+
+		const io = new IntersectionObserver(([e]) => {
+			visible = e.isIntersecting;
+			setRunning(visible && !document.hidden);
+		});
+		io.observe(canvas);
+		const onVis = () => setRunning(visible && !document.hidden);
+		document.addEventListener('visibilitychange', onVis);
+		const onTheme = () => applyTheme();
+		dark.addEventListener('change', onTheme);
+
+		return () => {
+			cancelAnimationFrame(raf);
+			io.disconnect();
+			document.removeEventListener('visibilitychange', onVis);
+			dark.removeEventListener('change', onTheme);
+		};
+	}
 </script>
 
-<div class="flex flex-col items-center gap-4">
-	<svg {width} {height} viewBox="0 0 {width} {height}" class="overflow-visible">
-		<!-- Malaysia -->
-		<path
-			d={malaysiaPath}
-			class="fill-neutral-100 stroke-neutral-300 dark:fill-neutral-800 dark:stroke-neutral-600"
-			stroke-width="1"
-		/>
+<div class="relative" style="width: {width}px; height: {height}px;">
+	<canvas
+		width={oceanW}
+		height={oceanH}
+		class="pointer-events-none absolute -z-10"
+		style="left: {-bleed.left}px; top: {-bleed.top}px; width: {oceanW}px; height: {oceanH}px;"
+		aria-hidden="true"
+		{@attach oceanShader}
+	></canvas>
 
-		<!-- Singapore -->
-		<path
-			d={singaporePath}
-			class="fill-neutral-100 stroke-neutral-300 dark:fill-neutral-800 dark:stroke-neutral-600"
-			stroke-width="1"
-		/>
+	<svg
+		{width}
+		{height}
+		viewBox="0 0 {width} {height}"
+		class="relative block overflow-visible"
+		role="img"
+		aria-label="Map showing my move from Kuala Lumpur and Singapore to San Francisco"
+	>
+		<path d={malaysiaPath} class={landClass} stroke-width="0.75" stroke-linejoin="round" />
+		<path d={singaporePath} class={landClass} stroke-width="0.75" stroke-linejoin="round" />
+		<path d={californiaPath} class={landClass} stroke-width="0.75" stroke-linejoin="round" />
 
-		<!-- Connection line -->
 		<path
-			bind:this={connectionPathEl}
-			d={connectionPath}
+			d={klSgPath}
 			fill="none"
-			class="stroke-amber-500/50 dark:stroke-amber-400/50"
-			stroke-width="1.5"
+			class="stroke-neutral-400 dark:stroke-neutral-600"
+			stroke-width="1"
+			stroke-dasharray="2 2"
 		/>
 
-		<!-- Kuala Lumpur marker -->
-		<g transform="translate({klPoint[0]}, {klPoint[1]})">
-			<circle r="4" class="fill-neutral-900 dark:fill-neutral-100" />
-			<circle
-				r="6"
-				class="fill-none stroke-neutral-900/30 dark:stroke-neutral-100/30"
-				stroke-width="1.5"
-			/>
-		</g>
+		<path
+			d={sgSfPathD}
+			fill="none"
+			class="stroke-amber-500 dark:stroke-amber-400"
+			stroke-width="1.5"
+			stroke-linecap="round"
+			{@attach animateArc}
+		/>
 
-		<!-- Singapore marker -->
-		<g transform="translate({sgPoint[0]}, {sgPoint[1]})">
-			<circle r="4" class="fill-amber-500" />
-			<circle r="6" class="fill-none stroke-amber-500/40" stroke-width="1.5" />
-			<!-- Ping animation for current location -->
-			<circle r="4" class="animate-ping fill-amber-500 opacity-75" />
+		<g transform="translate({klPt[0]}, {klPt[1]})">
+			<circle r="2.5" class="fill-neutral-400 dark:fill-neutral-500" />
 		</g>
-
-		<!-- Labels -->
 		<text
-			x={klPoint[0]}
-			y={klPoint[1] - 12}
-			text-anchor="middle"
-			class="fill-neutral-600 text-[10px] font-medium dark:fill-neutral-400"
+			x={klPt[0] - 6}
+			y={klPt[1] + 3}
+			text-anchor="end"
+			class="{labelClass} fill-neutral-500 dark:fill-neutral-400"
 		>
 			KL
 		</text>
+
+		<g transform="translate({sgPt[0]}, {sgPt[1]})">
+			<circle r="3.5" class="fill-neutral-800 dark:fill-neutral-200" />
+			<circle
+				r="6"
+				class="fill-none stroke-neutral-800/20 dark:stroke-neutral-200/25"
+				stroke-width="1"
+			/>
+		</g>
 		<text
-			x={sgPoint[0]}
-			y={sgPoint[1] + 18}
-			text-anchor="middle"
-			class="fill-amber-600 text-[10px] font-medium dark:fill-amber-400"
+			x={sgPt[0] + 7}
+			y={sgPt[1] + 11}
+			text-anchor="start"
+			class="{labelClass} fill-neutral-700 dark:fill-neutral-300"
 		>
 			SG
 		</text>
-	</svg>
 
-	<p class="text-xs text-neutral-500 dark:text-neutral-500">
-		From <span class="text-neutral-700 dark:text-neutral-300">Kuala Lumpur</span>, based in
-		<span class="text-amber-600 dark:text-amber-400">Singapore</span>
-	</p>
+		<g transform="translate({sfPt[0]}, {sfPt[1]})">
+			<circle r="3.5" class="fill-amber-500 dark:fill-amber-400" />
+			<circle
+				r="6.5"
+				class="fill-none stroke-amber-500/30 dark:stroke-amber-400/35"
+				stroke-width="1"
+			/>
+		</g>
+		<text
+			x={sfPt[0] - 7}
+			y={sfPt[1] + 3}
+			text-anchor="end"
+			class="{labelClass} fill-amber-600 dark:fill-amber-400"
+		>
+			SF
+		</text>
+	</svg>
 </div>

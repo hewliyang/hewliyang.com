@@ -1,0 +1,384 @@
+[
+	{
+		"month": "2025-11",
+		"models": [
+			{
+				"model": "Sonnet 4.5",
+				"input": 412,
+				"output": 20353,
+				"cacheRead": 425258,
+				"cacheWrite": 100130,
+				"total": 546153,
+				"cost": 0.81
+			},
+			{
+				"model": "Haiku 4.5",
+				"input": 62457,
+				"output": 5737,
+				"cacheRead": 35084,
+				"cacheWrite": 24643,
+				"total": 127921,
+				"cost": 0.13
+			}
+		]
+	},
+	{
+		"month": "2025-12",
+		"models": [
+			{
+				"model": "Sonnet 4.5",
+				"input": 44458,
+				"output": 2052188,
+				"cacheRead": 115250512,
+				"cacheWrite": 11909363,
+				"total": 129256521,
+				"cost": 110.15
+			},
+			{
+				"model": "Opus 4.5",
+				"input": 532659,
+				"output": 927620,
+				"cacheRead": 62785859,
+				"cacheWrite": 4532503,
+				"total": 68778641,
+				"cost": 85.57
+			},
+			{
+				"model": "Haiku 4.5",
+				"input": 34915,
+				"output": 47773,
+				"cacheRead": 2780816,
+				"cacheWrite": 256965,
+				"total": 3120469,
+				"cost": 0.87
+			}
+		]
+	},
+	{
+		"month": "2026-01",
+		"models": [
+			{
+				"model": "Opus 4.5",
+				"input": 2994135,
+				"output": 4930542,
+				"cacheRead": 581397388,
+				"cacheWrite": 26937959,
+				"total": 616260024,
+				"cost": 592.26
+			},
+			{
+				"model": "Sonnet 4.5",
+				"input": 10629,
+				"output": 363818,
+				"cacheRead": 27974210,
+				"cacheWrite": 2986992,
+				"total": 31335649,
+				"cost": 25.08
+			},
+			{
+				"model": "Gemini 3 Flash",
+				"input": 972029,
+				"output": 28619,
+				"cacheRead": 423947,
+				"cacheWrite": 0,
+				"total": 1424595,
+				"cost": 0.43
+			},
+			{
+				"model": "Gemini 3 Pro",
+				"input": 133855,
+				"output": 16103,
+				"cacheRead": 690334,
+				"cacheWrite": 0,
+				"total": 840292,
+				"cost": 0.0
+			},
+			{
+				"model": "Sonnet 4.0",
+				"input": 258,
+				"output": 9429,
+				"cacheRead": 563615,
+				"cacheWrite": 85418,
+				"total": 658720,
+				"cost": 0.63
+			}
+		]
+	},
+	{
+		"month": "2026-02",
+		"models": [
+			{
+				"model": "Opus 4.6",
+				"input": 1634503,
+				"output": 4160372,
+				"cacheRead": 713390042,
+				"cacheWrite": 20702456,
+				"total": 739887373,
+				"cost": 598.27
+			},
+			{
+				"model": "Opus 4.5",
+				"input": 428095,
+				"output": 901861,
+				"cacheRead": 138943964,
+				"cacheWrite": 6863952,
+				"total": 147137872,
+				"cost": 137.06
+			},
+			{
+				"model": "GPT-5.3 Codex",
+				"input": 8696838,
+				"output": 829539,
+				"cacheRead": 132483712,
+				"cacheWrite": 0,
+				"total": 142010089,
+				"cost": 50.02
+			},
+			{
+				"model": "Sonnet 4.6",
+				"input": 4201,
+				"output": 360688,
+				"cacheRead": 19795227,
+				"cacheWrite": 1179353,
+				"total": 21339469,
+				"cost": 15.78
+			},
+			{
+				"model": "GPT-5.3 Codex Spark",
+				"input": 125115,
+				"output": 10829,
+				"cacheRead": 1168256,
+				"cacheWrite": 0,
+				"total": 1304200,
+				"cost": 0.0
+			},
+			{
+				"model": "Sonnet 4.5",
+				"input": 20,
+				"output": 672,
+				"cacheRead": 2991,
+				"cacheWrite": 3248,
+				"total": 6931,
+				"cost": 0.02
+			}
+		]
+	},
+	{
+		"month": "2026-03",
+		"models": [
+			{
+				"model": "Opus 4.6",
+				"input": 892913,
+				"output": 4955260,
+				"cacheRead": 1117786047,
+				"cacheWrite": 31072160,
+				"total": 1154706380,
+				"cost": 881.44
+			},
+			{
+				"model": "GPT-5.4",
+				"input": 18120606,
+				"output": 1759637,
+				"cacheRead": 299196160,
+				"cacheWrite": 0,
+				"total": 319076403,
+				"cost": 146.5
+			},
+			{
+				"model": "GPT-5.3 Codex",
+				"input": 1376233,
+				"output": 179951,
+				"cacheRead": 43657600,
+				"cacheWrite": 0,
+				"total": 45213784,
+				"cost": 12.57
+			},
+			{
+				"model": "Sonnet 4.6",
+				"input": 397,
+				"output": 38548,
+				"cacheRead": 2038051,
+				"cacheWrite": 287751,
+				"total": 2364747,
+				"cost": 2.27
+			},
+			{
+				"model": "GPT-5.3 Codex Spark",
+				"input": 6881,
+				"output": 2709,
+				"cacheRead": 23296,
+				"cacheWrite": 0,
+				"total": 32886,
+				"cost": 0.0
+			}
+		]
+	},
+	{
+		"month": "2026-04",
+		"models": [
+			{
+				"model": "Opus 4.6",
+				"input": 3008280,
+				"output": 2707611,
+				"cacheRead": 542595314,
+				"cacheWrite": 20504379,
+				"total": 568815584,
+				"cost": 482.18
+			},
+			{
+				"model": "Opus 4.7",
+				"input": 10216,
+				"output": 3416895,
+				"cacheRead": 502275779,
+				"cacheWrite": 20148067,
+				"total": 525850957,
+				"cost": 462.54
+			},
+			{
+				"model": "GPT-5.4",
+				"input": 19376106,
+				"output": 771712,
+				"cacheRead": 194493952,
+				"cacheWrite": 0,
+				"total": 214641770,
+				"cost": 108.64
+			},
+			{
+				"model": "GPT-5.5",
+				"input": 4123084,
+				"output": 365529,
+				"cacheRead": 66312704,
+				"cacheWrite": 0,
+				"total": 70801317,
+				"cost": 64.74
+			},
+			{
+				"model": "Bhumi 1",
+				"input": 565134,
+				"output": 42094,
+				"cacheRead": 3575296,
+				"cacheWrite": 0,
+				"total": 4182524,
+				"cost": 0.0
+			},
+			{
+				"model": "Sonnet 4.6",
+				"input": 5,
+				"output": 507,
+				"cacheRead": 26279,
+				"cacheWrite": 14946,
+				"total": 41737,
+				"cost": 0.07
+			}
+		]
+	},
+	{
+		"month": "2026-05",
+		"models": [
+			{
+				"model": "Opus 4.7",
+				"input": 30346,
+				"output": 10980831,
+				"cacheRead": 1843861520,
+				"cacheWrite": 61996338,
+				"total": 1916869035,
+				"cost": 1584.08
+			},
+			{
+				"model": "GPT-5.5",
+				"input": 21439951,
+				"output": 1255427,
+				"cacheRead": 338576384,
+				"cacheWrite": 0,
+				"total": 361271762,
+				"cost": 314.15
+			},
+			{
+				"model": "Opus 4.8",
+				"input": 2532,
+				"output": 914098,
+				"cacheRead": 104260990,
+				"cacheWrite": 3994504,
+				"total": 109172124,
+				"cost": 99.96
+			},
+			{
+				"model": "Bhumi 1",
+				"input": 49665,
+				"output": 6596,
+				"cacheRead": 130560,
+				"cacheWrite": 0,
+				"total": 186821,
+				"cost": 0.0
+			}
+		]
+	},
+	{
+		"month": "2026-06",
+		"models": [
+			{
+				"model": "Opus 4.8",
+				"input": 57274,
+				"output": 14818116,
+				"cacheRead": 1913748494,
+				"cacheWrite": 71413515,
+				"total": 2000037399,
+				"cost": 1773.95
+			},
+			{
+				"model": "Opus 4.7",
+				"input": 5418,
+				"output": 1745379,
+				"cacheRead": 340614184,
+				"cacheWrite": 6771315,
+				"total": 349136296,
+				"cost": 256.29
+			},
+			{
+				"model": "Fable 5",
+				"input": 3378,
+				"output": 1853383,
+				"cacheRead": 92405294,
+				"cacheWrite": 6111281,
+				"total": 100373336,
+				"cost": 130.75
+			},
+			{
+				"model": "GPT-5.5",
+				"input": 3548004,
+				"output": 172439,
+				"cacheRead": 42925568,
+				"cacheWrite": 0,
+				"total": 46646011,
+				"cost": 44.38
+			},
+			{
+				"model": "Sonnet 4.6",
+				"input": 103,
+				"output": 29111,
+				"cacheRead": 1869035,
+				"cacheWrite": 160262,
+				"total": 2058511,
+				"cost": 1.6
+			},
+			{
+				"model": "Sonnet 4.5",
+				"input": 248,
+				"output": 9101,
+				"cacheRead": 298519,
+				"cacheWrite": 61590,
+				"total": 369458,
+				"cost": 0.46
+			},
+			{
+				"model": "GPT-5.4 mini",
+				"input": 26943,
+				"output": 4997,
+				"cacheRead": 113664,
+				"cacheWrite": 0,
+				"total": 145604,
+				"cost": 0.05
+			}
+		]
+	}
+]

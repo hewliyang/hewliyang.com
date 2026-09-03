@@ -4,6 +4,7 @@
 	let { data } = $props();
 
 	let articleEl = $state<HTMLElement | null>(null);
+	let collapsed = $state(false);
 </script>
 
 {#snippet breadcrumb()}
@@ -23,10 +24,10 @@
 	<meta name="description" content={data.metadata.description} />
 </svelte:head>
 
-<main class="mx-auto max-w-6xl px-6 py-16 pb-24">
+<main class="mx-auto max-w-6xl px-6 py-16 pb-20 lg:pb-16">
 	<div class="mx-auto max-w-2xl lg:flex lg:max-w-none lg:justify-center lg:gap-16">
 		<!-- Main content -->
-		<div class="w-full max-w-2xl min-w-0">
+		<div class="w-full min-w-0 transition-all duration-200 {collapsed ? 'max-w-3xl' : 'max-w-2xl'}">
 			<div class="space-y-8">
 				<header class="space-y-4">
 					{@render breadcrumb()}
@@ -40,7 +41,7 @@
 					</time>
 				</header>
 
-				<article bind:this={articleEl} class="prose prose-neutral dark:prose-invert">
+				<article bind:this={articleEl} class="prose max-w-none prose-neutral dark:prose-invert">
 					<data.content />
 				</article>
 
@@ -52,6 +53,6 @@
 		</div>
 
 		<!-- ToC sidebar -->
-		<TableOfContents bind:articleEl />
+		<TableOfContents bind:articleEl bind:collapsed />
 	</div>
 </main>

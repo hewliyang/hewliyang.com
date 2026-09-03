@@ -8,6 +8,7 @@ import rehypeSlug from 'rehype-slug';
 import rehypeShiki from '@shikijs/rehype';
 import { transformerMetaHighlight } from '@shikijs/transformers';
 import { rehypeCustomComponents, rehypeUnwrapImages } from './plugins.js';
+import { remarkTypst } from './typst.js';
 
 /**
  * @typedef {Object} ComponentOverrides
@@ -40,6 +41,7 @@ function createProcessor(options) {
 	return unified()
 		.use(remarkParse)
 		.use(remarkGfm)
+		.use(remarkTypst)
 		.use(remarkRehype, { allowDangerousHtml: true })
 		.use(rehypeSlug)
 		.use(rehypeUnwrapImages)

@@ -3,6 +3,7 @@
 	import GithubActivity from '$lib/components/GithubActivity.svelte';
 	import GicLogo from '$lib/components/GicLogo.svelte';
 	import NusLogo from '$lib/components/NusLogo.svelte';
+	import ReductoLogo from '$lib/components/ReductoLogo.svelte';
 	import RegionMap from '$lib/components/RegionMap.svelte';
 	import Welcome from '$lib/components/Welcome.svelte';
 	import X from '$lib/components/X.svelte';
@@ -88,7 +89,11 @@
 {/snippet}
 
 {#snippet brightriverContent()}
-	Engineer #0 at <BrightriverLogo /> ; infra, agents, UI, ops, r&d
+	Engineer #0 at <BrightriverLogo />
+{/snippet}
+
+{#snippet reductoContent()}
+	Joined <ReductoLogo class="mb-px inline-block h-3 w-auto align-middle" />
 {/snippet}
 
 <div class="space-y-8">
@@ -99,7 +104,7 @@
 		<div class="grid grid-cols-1 gap-6 sm:grid-cols-[1fr_auto]">
 			<!-- Left column: intro content -->
 			<div class="space-y-6">
-				<p class="text-neutral-600 dark:text-neutral-400">I'm Li Yang. Some history:</p>
+				<p class="text-neutral-600 dark:text-neutral-400">The story so far:</p>
 
 				<!-- Timeline -->
 				<div class="relative space-y-3">
@@ -110,18 +115,31 @@
 
 					{@render timelineItem('GPT-3.5/4', gicContent)}
 					{@render timelineItem('2024', nusContent)}
-					{@render timelineItem('Sonnet 3.5', brightriverContent, 'current')}
+					{@render timelineItem('Sonnet 3.5', brightriverContent)}
+					{@render timelineItem('Fable 5', reductoContent, 'current')}
 				</div>
-
-				<p class="text-neutral-600 dark:text-neutral-400">
-					I like building tools that make my life (and the lives of people around me) easier. These
-					days, that means agents.
-				</p>
 			</div>
 
-			<!-- Right column: map -->
 			<div class="mt-4 flex justify-center sm:mt-0">
 				<RegionMap />
+			</div>
+
+			<div class="col-span-full space-y-4 text-neutral-600 dark:text-neutral-400">
+				<p>
+					I enjoy building tools that make life easier. These days, that means tools that <span
+						class="font-medium text-neutral-900 dark:text-neutral-100">use</span
+					>
+					agents and tools that
+					<span class="font-medium text-neutral-900 dark:text-neutral-100">equip</span> agents.
+				</p>
+				<p>
+					Lately I'm focused on
+					<span class="font-medium text-neutral-900 dark:text-neutral-100"
+						>document composition</span
+					>: software that lets coding agents create and edit .xlsx, .docx, .pptx, and .pdf files.
+					Document work is everywhere, and strong document agents will free a lot of people from
+					grunt work nobody wants to do.
+				</p>
 			</div>
 		</div>
 	</header>
@@ -130,7 +148,7 @@
 	<section class="space-y-3">
 		<h3 class="text-sm font-medium text-neutral-900 dark:text-neutral-100">Get in touch</h3>
 		<div class="flex flex-wrap items-center gap-4">
-			{#each contactLinks as link (link.href)}
+			{#each contactLinks as link}
 				{@render contactLink(link)}
 			{/each}
 		</div>

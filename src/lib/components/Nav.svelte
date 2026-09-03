@@ -35,12 +35,12 @@
 	<li>
 		<a
 			{href}
-			class="flex flex-col items-center gap-1 text-xs transition-colors {isActive(href)
+			aria-label={label}
+			class="flex items-center p-1.5 transition-colors {isActive(href)
 				? 'text-neutral-900 dark:text-neutral-100'
 				: 'text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200'}"
 		>
-			<Icon size={20} />
-			<span>{label}</span>
+			<Icon size={18} />
 		</a>
 	</li>
 {/snippet}
@@ -59,7 +59,7 @@
 					Navigation
 				</p>
 				<ul class="space-y-1 border-l border-neutral-200 dark:border-neutral-800">
-					{#each links as link (link.href)}
+					{#each links as link}
 						{@render desktopLink(link.href, link.label)}
 					{/each}
 				</ul>
@@ -72,15 +72,12 @@
 <nav
 	class="fixed inset-x-0 bottom-0 z-50 border-t border-neutral-200 bg-white/80 backdrop-blur-sm lg:hidden dark:border-neutral-800 dark:bg-neutral-950/80"
 >
-	<ul class="flex items-center justify-center gap-8 px-4 py-3">
-		{#each links as link (link.href)}
+	<ul class="flex items-center justify-center gap-6 px-4 py-1.5">
+		{#each links as link}
 			{@render mobileLink(link.href, link.label, link.icon)}
 		{/each}
-		<li>
-			<div class="flex flex-col items-center gap-1 text-xs">
-				<ThemeToggle />
-				<span class="text-neutral-500 dark:text-neutral-400">Theme</span>
-			</div>
+		<li class="flex items-center p-1.5">
+			<ThemeToggle />
 		</li>
 	</ul>
 </nav>

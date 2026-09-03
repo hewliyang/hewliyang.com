@@ -6,12 +6,6 @@
 	--font-mono: 'IBM Plex Mono', monospace;
 }
 
-/* Fonts */
-@import '@fontsource-variable/space-grotesk';
-@import '@fontsource-variable/figtree';
-@import '@fontsource/ibm-plex-mono/400.css';
-@import '@fontsource/ibm-plex-mono/500.css';
-
 html {
 	color-scheme: light dark;
 }
@@ -110,6 +104,22 @@ html.dark .prose :where(code):not(:where(pre code)) {
 
 html.dark .prose :where(a):hover {
 	color: theme(colors.neutral.400);
+}
+
+/* Typst figures (compiled at build time, themed via currentColor) */
+.typst-figure {
+	display: flex;
+	justify-content: center;
+	color: theme(colors.neutral.800);
+}
+
+html.dark .typst-figure {
+	color: theme(colors.neutral.200);
+}
+
+.typst-figure svg {
+	width: 100%;
+	height: auto;
 }
 
 /* Shiki dual theme support */

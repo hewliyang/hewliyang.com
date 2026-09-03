@@ -13,9 +13,6 @@
 	aria-label="Toggle theme"
 	title={themeStore.current === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
 >
-	{#if themeStore.current === 'light'}
-		<Sun size={18} />
-	{:else}
-		<Moon size={18} />
-	{/if}
+	<Sun size={18} class="block dark:hidden" />
+	<Moon size={18} class="hidden dark:block" />
 </button>
